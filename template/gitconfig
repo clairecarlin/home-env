@@ -1,0 +1,10 @@
+# FIRST TIME: replace the <values>
+[user]
+    name = <git-user>
+    email = <git-email>
+[core]
+    excludesfile = ~/.gitignore_global
+    filemode = true
+# If not git 2.x, you may have to comment these out
+[push]
+    default = simple
