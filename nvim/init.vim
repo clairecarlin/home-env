@@ -55,3 +55,20 @@ set splitright
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
 :nnoremap <C-H> <C-W><C-H>
+
+" Spaces & Tabs {{{
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " number of spaces to use for autoindent
+set expandtab       " tabs are space
+set autoindent
+set copyindent      " copy indent from the previous line
+" }}} Spaces & Tabs
+
+" ** KEEP at EOF **
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
