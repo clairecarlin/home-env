@@ -38,7 +38,7 @@ set smartcase
 " higlight terms as searching 
 set hlsearch
 " key to remove search highlighting
-nmap \q :nohlsearch<CR>
+nmap <esc> :nohlsearch<CR>
 
 " Wrap and show text after 80 chars
 set textwidth=80
@@ -51,10 +51,10 @@ set splitbelow
 set splitright
 
 " better naviagtion in split panes
+:nnoremap <C-H> <C-W><C-H>
 :nnoremap <C-J> <C-W><C-J>
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
-:nnoremap <C-H> <C-W><C-H>
 
 " Spaces & Tabs {{{
 set tabstop=4       " number of visual spaces per TAB
@@ -64,6 +64,19 @@ set expandtab       " tabs are space
 set autoindent
 set copyindent      " copy indent from the previous line
 " }}} Spaces & Tabs
+"
+" Scrollbak buffer {{{
+function! ClearScrollback()
+  if &scrollback == 0
+    set scrollback=10000
+  else
+    set scrollback=0
+  endif
+endfunction
+
+command CS call ClearScrollback()
+:tnoremap <C-x> <C-\><C-n>:CS<CR><s-a>
+" }}} Scrollback buffer
 
 " ** KEEP at EOF **
 " Load all plugins now.
