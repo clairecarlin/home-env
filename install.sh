@@ -27,8 +27,8 @@ for f in $(find dot bin nvim site -name '*' -type f); do
     fi
     dir=$(dirname $dst)
     if [[ ! -d $dir ]]; then
-#         echo "mkdir -p $dir"
 	mkdir -p "$dir"
+#        echo "mkdir -p $dir"
     fi
     $cmd "$src" "$dst"
 #    echo "$cmd $src $dst"

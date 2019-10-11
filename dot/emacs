@@ -1,0 +1,20 @@
+
+                                        ; -*-emacs-lisp-*-
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(let
+    ;; Reversed, because add-to-list inserts in front of list
+  ((dirs '("~/src/biviosoftware/home-env/emacs.d" "~/emacs" "~/.emacs.d/lisp")))
+  (dolist (p dirs)
+    (add-to-list 'load-path p)))
+(ignore-errors
+    (require 'pre-bivio-init))
+(require 'bivio-init)
+(require 'e-carlin-init)
+(ignore-errors
+  (require 'post-bivio-init))
