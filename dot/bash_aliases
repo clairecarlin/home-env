@@ -12,6 +12,7 @@ alias la="ls -all"
 alias ll="ls -l"
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
+alias vim="neovim" # must be before alias v
 alias v="vim ."
 
 # From: https://github.com/biviosoftware/home-env/blob/master/bashrc.d/zz-10-base.sh#L296

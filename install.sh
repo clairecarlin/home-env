@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+mkdir -p "$HOME"/bin
+
 # POST: no whitespace in filenames so ok
 for f in $(find dot bin nvim site -name '*' -type f); do 
     echo "$f"

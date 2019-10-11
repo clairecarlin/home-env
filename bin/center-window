@@ -1,0 +1,23 @@
+screen_width=$(xwininfo -root | awk '$1=="Width:" {print $2}')
+screen_height=$(xwininfo -root | awk '$1=="Height:" {print $2}')
+width_off_center=$(( screen_width / 4 ))
+x="$(( (screen_width / 2 ) - width_off_center ))"
+y=0
+width=$(( width_off_center * 2 ))
+height=$screen_height
+
+chrome_windows="$(wmctrl -lp | grep "Google Chrome\|Visual Studio Code")"
+old_IFS=$IFS
+IFS=$'\n'
+choices=( $chrome_windows )
+IFS=$old_IFS
+PS3="Please enter your choice: "
+select answer in "${choices[@]}"; do
+  for item in "${choices[@]}"; do
+    if [[ $item == $answer ]]; then
+      break 2
+    fi
+  done
+done
+wid="$(echo "$answer" | cut -d' ' -f1)"
+wmctrl -i -r "$wid" -e 0,$x,$y,$width,$height
