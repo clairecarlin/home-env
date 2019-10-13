@@ -4,10 +4,24 @@ set -euo pipefail
 
 mkdir -p "$HOME"/bin
 
+OPTIND=1 # Reset in case getopts has been used previously in the shell.
+confirm=0
+while getopts "c" opt; do
+    case "$opt" in
+    c)  confirm=1
+        ;;
+    esac
+done
+shift $((OPTIND-1))
+[ "${1:-}" = "--" ] && shift # TODO(e-carlin): What does this do?
+
+echo "confirm is $confirm"
+if ! (($confirm)); then
+    echo "Running in debug mode. Use -c to confirm changes."
+fi
+
 # POST: no whitespace in filenames so ok
 for f in $(find dot bin nvim site -name '*' -type f); do 
-    echo "$f"
-
     src=$PWD/$f
     cmd='ln -s'
     if [[ $src =~ bin/ ]]; then
@@ -24,14 +38,28 @@ for f in $(find dot bin nvim site -name '*' -type f); do
         if cmp --silent "$dst" "$src"; then
             continue
         fi
-        rm -f "$dst.old"
-	mv "$dst" "$dst.old"
+        if (($confirm)); then
+            rm -f "$dst.old"
+        else
+            echo "would run rm -f $dst.old"
+        fi
+        if (($confirm)); then
+            mv "$dst" "$dst.old"
+        else
+            echo "would run mv $dst $dst.old"
+        fi
     fi
     dir=$(dirname $dst)
     if [[ ! -d $dir ]]; then
-	mkdir -p "$dir"
-#        echo "mkdir -p $dir"
+        if (($confirm)); then
+            mkdir -p "$dir"
+        else
+            echo "would run mkdir -p $dir"
+        fi
     fi
-    $cmd "$src" "$dst"
-#    echo "$cmd $src $dst"
+    if (($confirm)); then
+        $cmd "$src" "$dst"
+    else
+        echo "would run $cmd $src $dst"
+    fi
 done
