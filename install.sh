@@ -15,7 +15,6 @@ done
 shift $((OPTIND-1))
 [ "${1:-}" = "--" ] && shift # TODO(e-carlin): What does this do?
 
-echo "confirm is $confirm"
 if ! (($confirm)); then
     echo "Running in debug mode. Use -c to confirm changes."
 fi
