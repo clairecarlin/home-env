@@ -1,48 +1,75 @@
 {
     "vim.useSystemClipboard": true,
     "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
+      {
+        "before": [
+          "j",
+          "j"
+        ],
+        "after": [
+          "<Esc>"
+        ]
+      }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "d"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "d"
-            ]
-        },
+      {
+        "before": [
+          "d"
+        ],
+        "after": [
+          "\"",
+          "_",
+          "d"
+        ]
+      },
+  
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        // TODO(e-carlin): This doesn't work
-        {
-            "before": [
-                "d",
-                "d"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "d",
-                "d"
-            ]
-        },
+      // TODO(e-carlin): This doesn't work
+      {
+        "before": [
+          "d",
+          "d"
+        ],
+        "after": [
+          "\"",
+          "_",
+          "d",
+          "d"
+        ]
+      },
+  
     ],
     "vim.handleKeys": {
-        "<C-n>": false,
-        "<C-f>": false,
-        "<C-c": false,
-        "<C-w>": false
+      "<C-n>": false,
+      "<C-f>": false,
+      "<C-c": false,
+      "<C-w>": false
     },
-    asdlfkjasdf
-}
+    "editor.rulers": [80],
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true,
+      "**/*.pyc": {
+        "when": "$(basename).py"
+      },
+      "**/__pycache__": true,
+      "**/tests/**/*_work": true
+    },
+    "search.exclude": {
+    "**/output": true
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.editor.enablePreview": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "python.jediEnabled": false,
+    "editor.tabCompletion": "on",
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#7000bf"
+    }
+  }
+  
