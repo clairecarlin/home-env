@@ -65,13 +65,16 @@ done
 
 
 linux() {
-    dst="/opt/vscode/data"
-    if [ -e $dst ]; then
-        rm -rf "$dst"
-    else
-        ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
+    # only need vscode in xwindow env
+    if xset q &>/dev/null; then
+        dst="/opt/vscode/data"
+        if [ -e $dst ]; then
+            rm -rf "$dst"
+        else
+            ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
+        fi
+        sudo ln -sf "/opt/vscode/bin/code" "/usr/bin"
     fi
-    sudo ln -sf "/opt/vscode/bin/code" "/usr/bin"
 }
 
 readonly OS="$(uname -a | cut -d ' ' -f1)"
