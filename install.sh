@@ -67,7 +67,7 @@ done
 linux() {
     dst="/opt/vscode/data"
     if [ -e $dst ]; then
-        echo "$dst exists skipping symlink"
+        rm -rf "$dst"
     else
         ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
     fi
