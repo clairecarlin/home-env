@@ -1,6 +1,6 @@
 (provide 'e-carlin-init)
 
-;; (setq package-user-dir "~/src/biviosoftware/home-env/emacs.d/melpa") ; sets melpa install dir
+;; (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
 ;; (require 'package)
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; (add-to-list 'package-archives '("gnu" . "https://melpa.org/packages/") t)
@@ -9,7 +9,7 @@
 
 ;; evil mode for vi keybindings
 (require 'undo-tree) ; evil needs undo-tree
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/evil")
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)
@@ -23,7 +23,7 @@
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 ;; helm for completions
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/helm")
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/helm")
 (require 'helm-config)
 (helm-mode 1)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
@@ -79,7 +79,7 @@
 (global-set-key (kbd "C-x f") 'helm-find-files)
 
 
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/flycheck")
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/flycheck")
 (require 'dash) ; flycheck dependency
 (require 'pkg-info) ; flycheck dependency
 (require 'epl) ; pkg-info dependency
@@ -90,7 +90,7 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/emacs-pager.el")
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/emacs-pager.el")
 (require 'emacs-pager)
 (add-to-list 'auto-mode-alist '("\\.emacs-pager$" . emacs-pager-mode))
 
@@ -103,8 +103,8 @@
 (pyenv-mode)
 
 ;; elpy for python development
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/elpy")
-(add-to-list 'load-path "~/src/biviosoftware/home-env/emacs.d/company-mode") ;; dependency of elpy
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/elpy")
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/company-mode") ;; dependency of elpy
 (require 'company)
 (require 'elpy)
 (elpy-enable)
