@@ -77,7 +77,24 @@ linux() {
     fi
 }
 
+darwin() {
+    dst="/Applications/code-portable-data"
+    if [ -e $dst ]; then
+        rm -rf "$dst"
+    else
+        ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
+    fi
+}
+
+
 readonly OS="$(uname -a | cut -d ' ' -f1)"
 if [[ "${OS}" = "Linux" ]]; then
     linux
+elif [[ "$OS" = "Darwin" ]]; then
+    darwin
+else
+    echo "$OS unrecognized"
+    exit 1
 fi
+unset -f linux
+unset -f darwin
