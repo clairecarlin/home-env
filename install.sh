@@ -65,8 +65,13 @@ done
 
 
 linux() {
+    dst="/opt/vscode/data"
+    if [ -e $dst ]; then
+        echo "$dst exists skipping symlink"
+    else
+        ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
+    fi
     sudo ln -sf "/opt/vscode/bin/code" "/usr/bin"
-    ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "/opt/vscode/data"
 }
 
 readonly OS="$(uname -a | cut -d ' ' -f1)"
