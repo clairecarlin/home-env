@@ -19,6 +19,14 @@ macos I use [karabiner](https://pqrs.org/osx/karabiner/).
 - If using iTerm swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
 
+## vscode setup
+VSCode is my main text editor. I have it setup in [portable mode](https://code.visualstudio.com/docs/editor/portable)
+so it is easier to manage the configuration of it across systems.
+### vscode on linux
+- Download the tarball from the vscode downloads page
+- Unpack it into a directory named `vscode`
+- move that directory into `/opt`
+
 ## Setup instructions
 *DISCLAIMER:* This installation will overwrite your existing dotfiles and any
 other files in it's way. It should move most files to a `*.old` but makes no
