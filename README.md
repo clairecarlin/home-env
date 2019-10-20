@@ -29,9 +29,10 @@ change what makes sense for you.
 1. `mkdir -p ~/src/e-carlin`
 2. `cd $_ && git clone --recursive https://gitlab.com/e-carlin/home-env.git`
 3. `cd home-env`
-4. `bash install.sh`
-5. `cd emacs.d/helm`
-6. `make`
-7. `sudo make install`
-8. `cd ../eply`
-9. `pip install .`
+4. `bash install.sh # shows you what will happen`
+5. `bash install.sh -c # applies changes. -c stands for "confirm"`
+6. `cd emacs.d/helm`
+7. `make`
+8. `sudo make install`
+9. `cd ../eply`
+10. `pip install .`
