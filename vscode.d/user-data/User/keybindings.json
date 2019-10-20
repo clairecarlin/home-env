@@ -22,5 +22,15 @@
   {
       "key": "cmd+l",
       "command": "python.runLinting"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+k v",
+    "command": "-markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
   }
 ]

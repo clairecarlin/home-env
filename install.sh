@@ -63,6 +63,21 @@ for f in $(find dot bin nvim site -name '*' -type f); do
     fi
 done
 
+for f in gitconfig netrc; do
+    dst="$HOME"/.$f
+    if [[ -e $dst ]]; then
+        continue
+    fi
+    if [[ -L $dst ]]; then
+        rm "$dst"
+    fi
+    src=$PWD/template/$f
+    if [[ -r $src ]]; then
+        echo "Copying template to $dst; YOU NEED TO EDIT IT."
+	install -m 0600 "$src" "$dst"
+    fi
+done
+
 
 linux() {
     # only need vscode in xwindow env
