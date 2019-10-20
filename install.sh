@@ -65,8 +65,6 @@ done
 
 
 linux() {
-# TODO(e-carlin): Fix. Recognize xwindow and only enable then
-#    xmodmap ~/.Xmodmap
     sudo ln -sf "/opt/vscode/bin/code" "/usr/bin"
     ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "/opt/vscode/data"
 }

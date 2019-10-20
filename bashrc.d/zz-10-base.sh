@@ -9,6 +9,12 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+
+# only use xmodmap if in xwindow env
+if xset q &>/dev/null; then
+    xmodmap ~/.Xmodmap
+fi
+
 export EDITOR=$(type -p nvim)
 export PAGER=$(type -p less)
 export PROMPT_COMMAND=""
