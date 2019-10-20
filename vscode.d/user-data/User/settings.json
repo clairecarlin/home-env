@@ -1,0 +1,48 @@
+{
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "d"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // TODO(e-carlin): This doesn't work
+        {
+            "before": [
+                "d",
+                "d"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "d"
+            ]
+        },
+    ],
+    "vim.handleKeys": {
+        "<C-n>": false,
+        "<C-f>": false,
+        "<C-c": false,
+        "<C-w>": false
+    },
+    asdlfkjasdf
+}
