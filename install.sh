@@ -96,9 +96,8 @@ darwin() {
     dst="/Applications/code-portable-data"
     if [ -e $dst ]; then
         rm -rf "$dst"
-    else
-        ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
     fi
+    ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
 }
 
 
