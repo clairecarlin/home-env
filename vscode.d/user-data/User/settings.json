@@ -22,7 +22,7 @@
           "d"
         ]
       },
-  
+
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
       // TODO(e-carlin): This doesn't work
@@ -38,7 +38,7 @@
           "d"
         ]
       },
-  
+
     ],
     "vim.handleKeys": {
       "<C-n>": false,
@@ -70,6 +70,6 @@
     "editor.tabCompletion": "on",
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#7000bf"
-    }
+    },
+    "files.trimTrailingWhitespace": true
   }
-  
