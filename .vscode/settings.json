@@ -1,6 +1,7 @@
 {
     "search.exclude": {
+        "emacs.d/": true,
         "vscode.d/extensions/*/**": true
     },
-    "window.zoomLevel": 1
+    "window.zoomLevel": 0
 }

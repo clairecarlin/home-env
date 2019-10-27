@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+#
+# Cache how vagrant makes the ssh connection, because at least 3 seconds faster
+# since don't have to startup Ruby.
+#
+# Also gives us a hook for checking guest additions
+#
+
+# State between runs
+state_file=.vagrant/.bivio_vagrant_ssh.sh
+
+# Load stored state
+if [[ -r $state_file ]]; then
+    source "$state_file" 2>/dev/null
+fi
+
+# Computed host version
+host_version=$(perl -e 'print((`VBoxManage --version` =~ /^([\d\.]+)/)[0])')
+
+check_vm_state() {
+    local vbox_id=$(cat .vagrant/machines/default/virtualbox/id 2>/dev/null)
+    if [[ ! $vbox_id ]]; then
+        return 1
+    fi
+    eval $(VBoxManage showvminfo "$vbox_id" --machinereadable 2>/dev/null | egrep -s '^(VMState|GuestAdditionsVersion)')
+    guest_version=${GuestAdditionsVersion% *}
+    is_running=
+    if [[ $VMState == running ]]; then
+        is_running=1
+    fi
+}
+
+exec_ssh() {
+    local -a cmd=( "${ssh_cmd[@]}" "$@" )
+    "${cmd[@]}"
+    echo 'Something went seriously wrong. Try "vagrant ssh" or "vagrant status"' 1>&2
+    exit 1
+}
+
+# Normal case up front so runs the fastest
+check_vm_state
+if [[ $is_running && $ssh_cmd \
+    && $last_vm_boot == $VMStateChangeTime \
+    && ( $host_version == $guest_version || -n $vbguest_plugin_warning ) \
+]]; then
+    exec_ssh "$@"
+fi
+
+#
+# All the special cases are below
+#
+
+# Where ssh outputs errors (below)
+ssh_err_file=.vagrant/.bivio_vagrant_ssh.log
+
+err_exit() {
+    user_msg "$1"
+    if [[ ! -s $ssh_err_file ]]; then
+        cat "$ssh_err_file"
+    fi
+    exit 1
+}
+
+user_msg() {
+    echo "$1" 1>&2
+}
+
+if [[ ! $host_version ]]; then
+    err_exit 'VBoxManage needs to be in $PATH to work.'
+fi
+
+if [[ ! -f Vagrantfile ]]; then
+    err_exit 'You need to initialize vagrant, e.g. "vagrant init radiasoft/fedora"'
+fi
+
+if [[ ! $is_running ]]; then
+    user_msg 'VM not running. Booting... (may take a few minutes)'
+    # This may fail due to a guest update problem so we have to check running
+    vagrant up
+    check_vm_state
+    if [[ ! $is_running ]]; then
+        err_exit 'Unable to boot VM (see above)'
+    fi
+fi
+
+if [[ $guest_version != $host_version && -z $vbguest_plugin_warning ]]; then
+    vbguest_plugin_warning=1
+    user_msg "VirtualBox guest software ($guest_version != $host_version"') is out of date; try installing:
+
+  vagrant plugin install vagrant-vbguest
+
+or update your Vagrantfile:
+
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox", disabled: true
+  config.vbguest.auto_update = false
+'
+fi
+
+user_msg 'Extracting virtual machine ssh command ... (may take a few seconds)'
+
+vagrant ssh -c 'sleep 3' > "$ssh_err_file" 2>&1 < /dev/null &
+child=$!
+declare -i i=0
+ssh_cmd=
+ssh_re='( |/)(ssh vagrant@127.*) -t bash'
+while (( $i < 10 )); do
+    if [[ $(ps axww | grep '[b]ash.*sleep 3') =~ $ssh_re ]]; then
+        ssh_cmd=${BASH_REMATCH[2]}
+        break
+    fi
+    sleep 1
+    i+=1
+done
+
+if [[ ! $ssh_cmd ]]; then
+    err_exit 'Unable to access virtual machine:' "$ssh_err_file"
+fi
+
+i=0
+while ps "$child" &>/dev/null; do
+    if (( $i > 10 )); then
+        kill -9 "$child"
+        err_exit 'Remote process had to be killed:' "$ssh_err_file"
+    fi
+    sleep 1
+    i+=1
+done
+rm -f "$ssh_err_file"
+
+# FATAL outputs nothing on error so switch to ERROR
+ssh_cmd=${ssh_cmd/LogLevel=FATAL/LogLevel=ERROR}
+
+cat > "$state_file" <<EOF
+ssh_cmd=(exec $ssh_cmd)
+last_vm_boot='$VMStateChangeTime'
+vbguest_plugin_warning=$vbguest_plugin_warning
+EOF
+. "$state_file"
+
+user_msg 'Starting ssh...'
+
+exec_ssh "$@"

@@ -46,6 +46,7 @@ unset -f darwin
 
 export EDITOR=$(type -p nvim)
 export PAGER=$(type -p less)
+export PATH="$PATH:$HOME/bin"
 export PROMPT_COMMAND=""
 export PS1="\W\$(parse_git_branch)$ "
 export TERM=xterm-256color
