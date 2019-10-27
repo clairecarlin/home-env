@@ -70,6 +70,9 @@
     "editor.tabCompletion": "on",
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#7000bf"
-    }
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
   }
   
