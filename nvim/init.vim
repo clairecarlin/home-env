@@ -35,7 +35,7 @@ set incsearch
 set ignorecase
 " If a char is capatlized don't ignore its case while searching
 set smartcase
-" higlight terms as searching 
+" higlight terms as searching
 set hlsearch
 " key to remove search highlighting
 nmap <esc> :nohlsearch<CR>
@@ -50,11 +50,12 @@ au BufNewFile,BufRead *.md setlocal colorcolumn=81
 set splitbelow
 set splitright
 
+
 " better naviagtion in split panes
-:nnoremap <C-H> <C-W><C-H>
-:nnoremap <C-J> <C-W><C-J>
-:nnoremap <C-K> <C-W><C-K>
-:nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 " Spaces & Tabs {{{
 set tabstop=4       " number of visual spaces per TAB
@@ -67,10 +68,10 @@ set copyindent      " copy indent from the previous line
 "
 " Scrollbak buffer {{{
 function! ClearScrollback()
-  if &scrollback == 0
-    set scrollback=10000
+  if &scrollback == 1
+      set scrollback=10000
   else
-    set scrollback=0
+      set scrollback=1
   endif
 endfunction
 
@@ -85,3 +86,7 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
+
+"make terminal buffers 'hide' so when I do C-w o to maximize one the others
+"aren't lost
+autocmd TermOpen * set bufhidden=hide

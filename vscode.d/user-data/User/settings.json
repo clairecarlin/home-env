@@ -1,75 +1,86 @@
 {
-    "vim.useSystemClipboard": true,
-    "vim.insertModeKeyBindings": [
-      {
-        "before": [
-          "j",
-          "j"
-        ],
-        "after": [
-          "<Esc>"
-        ]
-      }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-      {
-        "before": [
-          "d"
-        ],
-        "after": [
-          "\"",
-          "_",
-          "d"
-        ]
-      },
-
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-      // TODO(e-carlin): This doesn't work
-      {
-        "before": [
-          "d",
-          "d"
-        ],
-        "after": [
-          "\"",
-          "_",
-          "d",
-          "d"
-        ]
-      },
-
-    ],
-    "vim.handleKeys": {
-      "<C-n>": false,
-      "<C-f>": false,
-      "<C-c": false,
-      "<C-w>": false
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "d"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d"
+      ]
     },
-    "editor.rulers": [80],
-    "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true,
-      "**/*.pyc": {
-        "when": "$(basename).py"
-      },
-      "**/__pycache__": true,
-      "**/tests/**/*_work": true
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // TODO(e-carlin): This doesn't work
+    {
+      "before": [
+        "d",
+        "d"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "d"
+      ]
     },
-    "search.exclude": {
+  ],
+  "vim.handleKeys": {
+    "<C-n>": false,
+    "<C-f>": false,
+    "<C-c": false,
+    "<C-w>": false
+  },
+  "editor.rulers": [
+    80
+  ],
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/*.pyc": {
+      "when": "$(basename).py"
+    },
+    "**/__pycache__": true,
+    "**/tests/**/*_work": true
+  },
+  "search.exclude": {
     "**/output": true
-    },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.editor.enablePreview": false,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "python.jediEnabled": false,
-    "editor.tabCompletion": "on",
-    "workbench.colorCustomizations": {
-        "editor.selectionBackground": "#7000bf"
-    },
-    "files.trimTrailingWhitespace": true
-  }
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.editor.enablePreview": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "python.jediEnabled": false,
+  "editor.tabCompletion": "on",
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#7000bf"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.trimTrailingWhitespace": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 1
+}
