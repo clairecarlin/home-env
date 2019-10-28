@@ -71,5 +71,6 @@
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#7000bf"
     },
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": 0
   }
