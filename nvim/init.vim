@@ -85,3 +85,7 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
+
+"make terminal buffers 'hide' so when I do C-w o to maximize one the others
+"aren't lost
+autocmd TermOpen * set bufhidden=hide
