@@ -5,6 +5,7 @@ vssh() {
 export PYKERN_PKDEBUG_OUTPUT=/dev/tty
 export PYKERN_PKDEBUG_REDIRECT_LOGGING=1
 export PYKERN_PKDEBUG_CONTROL=.*
+export SIREPO_FEATURE_CONFIG_JOB_SUPERVISOR=1 # TODO(e-carlin): Remove
 
 export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv 1>/dev/null 2>&1; then
