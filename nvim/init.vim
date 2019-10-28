@@ -68,10 +68,10 @@ set copyindent      " copy indent from the previous line
 "
 " Scrollbak buffer {{{
 function! ClearScrollback()
-  if &scrollback == 0
-    set scrollback=10000
+  if &scrollback == 1
+      set scrollback=10000
   else
-    set scrollback=0
+      set scrollback=1
   endif
 endfunction
 
