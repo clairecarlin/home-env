@@ -35,7 +35,7 @@ set incsearch
 set ignorecase
 " If a char is capatlized don't ignore its case while searching
 set smartcase
-" higlight terms as searching 
+" higlight terms as searching
 set hlsearch
 " key to remove search highlighting
 nmap <esc> :nohlsearch<CR>
@@ -50,11 +50,12 @@ au BufNewFile,BufRead *.md setlocal colorcolumn=81
 set splitbelow
 set splitright
 
+
 " better naviagtion in split panes
-:nnoremap <C-H> <C-W><C-H>
-:nnoremap <C-J> <C-W><C-J>
-:nnoremap <C-K> <C-W><C-K>
-:nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 " Spaces & Tabs {{{
 set tabstop=4       " number of visual spaces per TAB
