@@ -80,7 +80,7 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0.75,
   "files.trimTrailingWhitespace": true,
   "editor.quickSuggestions": {
     "other": true,
