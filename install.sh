@@ -20,7 +20,7 @@ if ! (($confirm)); then
 fi
 
 # POST: no whitespace in filenames so ok
-for f in $(find dot bin nvim site -name '*' -type f); do 
+for f in $(find dot bin nvim site -name '*' -type f); do
     src=$PWD/$f
     cmd='ln -s'
     if [[ $src =~ bin/ ]]; then
@@ -100,10 +100,10 @@ darwin() {
 }
 
 
-readonly OS="$(uname -a | cut -d ' ' -f1)"
-if [[ "${OS}" = "Linux" ]]; then
+OS="$(uname -a | cut -d ' ' -f1)"
+if [[ "${OS}" == "Linux" ]]; then
     linux
-elif [[ "$OS" = "Darwin" ]]; then
+elif [[ "$OS" == "Darwin" ]]; then
     darwin
 else
     echo "$OS unrecognized"

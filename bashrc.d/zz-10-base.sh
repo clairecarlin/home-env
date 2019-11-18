@@ -34,10 +34,10 @@ darwin() {
     defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 }
 
-readonly OS="$(uname -a | cut -d ' ' -f1)"
-if [[ "${OS}" = "Linux" ]]; then
+OS="$(uname -a | cut -d ' ' -f1)"
+if [[ "${OS}" == "Linux" ]]; then
     linux
-elif [[ "${OS}" = "Darwin" ]]; then
+elif [[ "${OS}" == "Darwin" ]]; then
     darwin
 fi
 unset -f linux
