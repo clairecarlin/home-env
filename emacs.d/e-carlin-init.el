@@ -15,12 +15,12 @@
 (advice-add 'evil-make-overriding-map :override #'ignore)
 (require 'key-chord)
 (key-chord-mode 1)
-(key-chord-define evil-insert-state-map  "jj" 'evil-normal-state)
-
-;; ace-windwo for easier window switching
-(require 'ace-window)
-(global-set-key (kbd "M-o") 'ace-window)
-(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(key-chord-define evil-insert-state-map  "jj" 'evil-normal-state) ; normal mode with jj
+;; window motions
+(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
 ;; helm for completions
 (add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/helm")
