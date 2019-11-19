@@ -10,6 +10,7 @@ _init() {
     for f in \
         /etc/bashrc \
         /etc/bash.bashrc \
+        "$HOME"/src/biviosoftware/home-env/bashrc.d/*.sh \
         "$HOME"/src/e-carlin/home-env/bashrc.d/*.sh \
         ; do
         if [[ -f $f ]]; then
