@@ -44,9 +44,15 @@ unset -f linux
 unset -f darwin
 
 
-export EDITOR=$(type -p nvim)
-export PAGER=$(type -p less)
+if [[ ${INSIDE_EMACS:-} =~ comint ]]; then
+    export EDITOR=$(type -p emacsclient)
+    export PAGER=emacs-pager
+else
+    export EDITOR=$(type -p emacs)
+    export PAGER=$(type -p less)
+fi
+
+export TERM=xterm-256color
 export PATH="$PATH:$HOME/bin"
 export PROMPT_COMMAND=""
 export PS1="\W\$(parse_git_branch)$ "
-export TERM=xterm-256color
