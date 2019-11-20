@@ -22,6 +22,11 @@
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+;; evil-commentary for commenting out code
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/evil-commentary")
+(require 'evil-commentary)
+(evil-commentary-mode)
+
 ;; helm for completions
 (add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/helm")
 (require 'helm-config)
