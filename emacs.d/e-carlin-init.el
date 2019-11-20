@@ -25,12 +25,15 @@
 ;; helm for completions
 (add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/helm")
 (require 'helm-config)
+(require 'helm-dabbrev) ; dynamic abbreviations
 (helm-mode 1)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (global-set-key (kbd "M-x") 'helm-M-x) ; helm for M-x
 (setq helm-mode-fuzzy-match t) ; fuzzy matching for all of helm
+(setq helm-dabbrev-related-buffer-fn nil) ; search in all buffers for dabbrev matches
+(global-set-key (kbd "M-'") 'helm-dabbrev)
 
 ;; follow version controlled symlinks
 (setq vc-follow-symlinks t)
