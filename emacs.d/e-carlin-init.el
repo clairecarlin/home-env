@@ -167,7 +167,10 @@
       ad-do-it)
     ad-do-it))
 
+
 ;; set purple text highlight background
 (set-face-attribute 'region nil
         :background "purple"
         :foreground "black")
+(set-face-attribute 'minibuffer-prompt nil
+                    :foreground "green" :background "black")
