@@ -39,6 +39,9 @@
 (setq helm-mode-fuzzy-match t) ; fuzzy matching for all of helm
 (setq helm-dabbrev-related-buffer-fn nil) ; search in all buffers for dabbrev matches
 (global-set-key (kbd "M-'") 'helm-dabbrev)
+(set-face-attribute 'helm-selection nil
+    :background "purple"
+    :foreground "black")
 
 ;; follow version controlled symlinks
 (setq vc-follow-symlinks t)
@@ -122,31 +125,10 @@
 (setq elpy-rpc-backend "jedi")
 (global-set-key (kbd "<f12>") 'elpy-goto-definition)
 
-;; enable mouse scrolling and selection
-(unless window-system
-  (require 'mouse)
-  (xterm-mouse-mode t)
-  (global-set-key [mouse-4] (lambda ()
-                              (interactive)
-                              (scroll-down 1)))
-  (global-set-key [mouse-5] (lambda ()
-                              (interactive)
-                              (scroll-up 1)))
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-)
-
 ;; show line numbers
 (global-linum-mode t)
 (add-hook 'shell-mode-hook (lambda () (linum-mode -1)))
 (add-hook 'dired-mode-hook (lambda () (linum-mode -1)))
-
-;; column marker at 80 cols
-(setq column-number-mode t) ;; show column numbers
-(require 'column-marker)
-;; (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
-;; (global-set-key [?\C-c ?m] 'column-marker-1)
-;; (setq column-marker-1 80) ;; todo(e-carlin): Get this working
 
 ;; Keep underscores within a word boundary
 (add-hook 'python-mode-hook
@@ -184,3 +166,8 @@
     (let ((web-mode-enable-part-face nil))
       ad-do-it)
     ad-do-it))
+
+;; set purple text highlight background
+(set-face-attribute 'region nil
+        :background "purple"
+        :foreground "black")
