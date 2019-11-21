@@ -176,5 +176,5 @@
 (set-face-attribute 'region nil
         :background "purple"
         :foreground "black")
-(set-face-attribute 'minibuffer-prompt nil
-                    :foreground "green" :background "black")
+ (set-face-attribute 'minibuffer-prompt nil
+                     :foreground "black")
