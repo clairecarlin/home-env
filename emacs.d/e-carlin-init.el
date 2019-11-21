@@ -42,6 +42,9 @@
 (set-face-attribute 'helm-selection nil
     :background "purple"
     :foreground "black")
+; get this to work
+;; (setq helm-ff-skip-boring-files t)
+;; (add-to-list 'helm-boring-file-regexp-list ".*\.pyc$")
 
 ;; follow version controlled symlinks
 (setq vc-follow-symlinks t)
@@ -124,6 +127,7 @@
 ;; (setq elpy-rpc-virtualenv-path "~/.pyenv/versions/py3")
 (setq elpy-rpc-backend "jedi")
 (global-set-key (kbd "<f12>") 'elpy-goto-definition)
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 
 ;; show line numbers
 (global-linum-mode t)
