@@ -126,8 +126,11 @@
 (setq elpy-rpc-virtualenv-path "~/.pyenv/shims/python")
 ;; (setq elpy-rpc-virtualenv-path "~/.pyenv/versions/py3")
 (setq elpy-rpc-backend "jedi")
-(add-hook 'python-mode-hook
-          (lambda () (define-key python-mode-map (kbd "C-]") 'elpy-goto-definition)))
+(add-hook 'python-mode-hook 'my-python-customizations)
+(defun my-python-customizations ()
+  (define-key python-mode-map (kbd "C-]") 'elpy-goto-definition)
+  (define-key python-mode-map (kbd "C-x 4 C-]") 'elpy-goto-definition-other-window)
+  )
 (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 
 ;; show line numbers
