@@ -175,10 +175,15 @@
       ad-do-it)
     ad-do-it))
 
-
 ;; set purple text highlight background
 (set-face-attribute 'region nil
         :background "purple"
         :foreground "black")
  (set-face-attribute 'minibuffer-prompt nil
                      :foreground "black")
+
+;; yasnippet for completions
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
