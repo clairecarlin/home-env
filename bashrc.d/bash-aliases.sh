@@ -1,5 +1,4 @@
 alias d_container_id="docker ps | cut -f1 -d ' ' | awk 'NR==2{printf \"%s\", \$1}' | xclip -selection c"
-alias e="emacs ."
 alias g_files_in_commit="git diff-tree --no-commit-id --name-only -r"
 alias gcam="git commit -a -m"
 alias gch="git checkout"
@@ -19,7 +18,16 @@ alias v="vim ."
 function g() {
     local x="$1"
     shift
+    echo "${@-.}"
     grep -iIrn --exclude-dir='.git' --exclude='*~' --exclude='.#*' --exclude='*/.#*' \
-        "$x" "${@-.}" 2>/dev/null
+         "$x" --include='*.py'
+    #${@-.} 2>/dev/null
 }
 export -f g
+
+function gpy() {
+    local x=$1
+    shift
+    grep -iIrn --include="*.py"  "$x" .
+}
+export -f gpy

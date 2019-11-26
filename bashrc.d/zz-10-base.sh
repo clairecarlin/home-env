@@ -1,10 +1,3 @@
-g() {
-    local x="$1"
-    shift
-    grep -iIr --exclude-dir='.git' --exclude='*~' --exclude='.#*' --exclude='*/.#*' \
-        "$x" "${@-.}" 2>/dev/null
-}
-
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -43,10 +36,17 @@ fi
 unset -f linux
 unset -f darwin
 
+function e() {
+    emacs "$@"
+}
+export -f e
 
 if [[ ${INSIDE_EMACS:-} =~ comint ]]; then
     export EDITOR=$(type -p emacsclient)
     export PAGER=emacs-pager
+    function e(){
+        emacsclient "$@"
+    }
 else
     export EDITOR=$(type -p emacs)
     export PAGER=$(type -p less)

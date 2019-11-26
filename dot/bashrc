@@ -17,6 +17,7 @@ _init() {
             source "$f"
         fi
     done
+    export PYTHONUNBUFFERED=1
 }
 
 _init
