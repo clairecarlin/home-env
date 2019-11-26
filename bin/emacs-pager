@@ -1,17 +1,14 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env python
 
-require 'digest/md5'
-require 'fileutils'
+import tempfile
+import fileinput
+import subprocess
 
-input = ARGF.read
-file = "/tmp/#{Digest::MD5.hexdigest input}.emacs-pager"
+f = tempfile.NamedTemporaryFile(suffix='.emacs-pager')
+for l in fileinput.input():
+  f.write(l)
 
-File.open(file, 'w') do |f|
-  f.write(input)
-end
-
-puts 'reading into emacs...'
-
-`emacsclient #{file}`
-
-FileUtils.rm(file)
+f.seek(0)
+f.read()
+subprocess.check_call(('emacsclient', f.name))
+f.close()
