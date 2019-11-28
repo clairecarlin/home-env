@@ -7,9 +7,8 @@
 (add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;; evil mode for vi keybindings
-(require 'undo-tree) ; evil needs undo-tree
-(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/evil")
+
+
 (require 'evil)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)

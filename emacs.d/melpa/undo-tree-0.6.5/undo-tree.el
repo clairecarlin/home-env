@@ -1203,6 +1203,42 @@ in visualizer."
     (setq undo-tree-visualizer-selection-mode-map map)))
 
 
+(defvar undo-tree-old-undo-menu-item nil)
+
+(defun undo-tree-update-menu-bar ()
+  "Update `undo-tree-mode' Edit menu items."
+  (if undo-tree-mode
+      (progn
+	;; save old undo menu item, and install undo/redo menu items
+	(setq undo-tree-old-undo-menu-item
+	      (cdr (assq 'undo (lookup-key global-map [menu-bar edit]))))
+	(define-key (lookup-key global-map [menu-bar edit])
+	  [undo] '(menu-item "Undo" undo-tree-undo
+			     :enable (and undo-tree-mode
+					  (not buffer-read-only)
+					  (not (eq t buffer-undo-list))
+					  (undo-tree-node-previous
+					   (undo-tree-current buffer-undo-tree)))
+			     :help "Undo last operation"))
+	(define-key-after (lookup-key global-map [menu-bar edit])
+	  [redo] '(menu-item "Redo" undo-tree-redo
+			     :enable (and undo-tree-mode
+					  (not buffer-read-only)
+					  (not (eq t buffer-undo-list))
+					  (undo-tree-node-next
+					   (undo-tree-current buffer-undo-tree)))
+			     :help "Redo last operation")
+	  'undo))
+    ;; uninstall undo/redo menu items
+    (define-key (lookup-key global-map [menu-bar edit])
+      [undo] undo-tree-old-undo-menu-item)
+    (define-key (lookup-key global-map [menu-bar edit])
+      [redo] nil)))
+
+(add-hook 'menu-bar-update-hook 'undo-tree-update-menu-bar)
+
+
+
 
 
 ;;; =====================================================================
@@ -3177,24 +3213,6 @@ signaling an error if file is not found."
       (undo-tree-visualizer-quit))))
 
 
-(defun undo-tree-show-help ()
-  (let ((msg (if (and (fboundp 'undo-tree-minibuffer-help-dynamic)
-		      undo-tree-minibuffer-help-dynamic)
-		 () ; TODO: look at keymap
-	       (concat "d = toggle diffs, "
-		       "s = toggle selection, "
-		       "t = toggle timestamps, "
-		       "q = quit at current history point, "
-		       "<ctrl> q = abort"))))
-	;  TODO: (if undo-tree-show-help-in-visualize-buffer
-	  ; (save-excursion
-	  ; move to lowest visible line
-	  ; insert this text instead of messaging
-	  ; only if we haven't just printed another message
-	  ; with user-error or user-friendly
-    (if (current-message) ()
-      (message msg))))
-
 
 (defun undo-tree-draw-tree (undo-tree)
   ;; Draw undo-tree in current buffer starting from NODE (or root if nil).
@@ -3242,16 +3260,7 @@ signaling an error if file is not found."
        (or undo-tree-visualizer-needs-extending-up
 	   (undo-tree-root undo-tree))))
     ;; highlight current node
-    (undo-tree-draw-node (undo-tree-current undo-tree) 'current))
-
-  (if (and (fboundp 'undo-tree-show-minibuffer-help)
-	   undo-tree-show-minibuffer-help)
-      (progn (remove-hook 'post-command-hook
-			  'undo-tree-show-help
-			  "local-to-buffer")
-	     (add-hook 'post-command-hook
-		       'undo-tree-show-help
-		       "at-end" "local-to-buffer"))))
+    (undo-tree-draw-node (undo-tree-current undo-tree) 'current)))
 
 
 (defun undo-tree-extend-down (node &optional bottom)
@@ -4127,54 +4136,6 @@ specifies `saved', and a negative prefix argument specifies
   "Toggle mode to select nodes in undo-tree visualizer."
   :lighter "Select"
   :keymap undo-tree-visualizer-selection-mode-map
-
-
-;; In visualizer selection mode:
-
-;; <up>  p  C-p  (`undo-tree-visualizer-select-previous')
-;;   Select previous node.
-
-;; <down>  n  C-n  (`undo-tree-visualizer-select-next')
-;;   Select next node.
-
-;; <left>  b  C-b  (`undo-tree-visualizer-select-left')
-;;   Select left sibling node.
-
-;; <right>  f  C-f  (`undo-tree-visualizer-select-right')
-;;   Select right sibling node.
-
-;; <pgup>  M-v
-;;   Select node 10 above.
-
-;; <pgdown>  C-v
-;;   Select node 10 below.
-
-;; <enter>  (`undo-tree-visualizer-set')
-;;   Set state to selected node and exit selection mode.
-
-;; s  (`undo-tree-visualizer-mode')
-;;   Exit selection mode.
-
-;; t  (`undo-tree-visualizer-toggle-timestamps')
-;;   Toggle display of time-stamps.
-
-;; d  (`undo-tree-visualizer-toggle-diff')
-;;   Toggle diff display.
-
-;; q  (`undo-tree-visualizer-quit')
-;;   Quit undo-tree-visualizer.
-
-;; C-q  (`undo-tree-visualizer-abort')
-;;   Abort undo-tree-visualizer.
-
-;; ,  <
-;;   Scroll left.
-
-;; .  >
-;;   Scroll right.
-
-
-
   :group undo-tree
   (cond
    ;; enable selection mode
@@ -4380,6 +4341,75 @@ specifies `saved', and a negative prefix argument specifies
     (when win
       (balance-windows)
       (shrink-window-if-larger-than-buffer win))))
+
+;;;; ChangeLog:
+
+;; 2013-12-28  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	* undo-tree: Update to version 0.6.5.
+;; 
+;; 2012-12-05  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	Update undo-tree to version 0.6.3
+;; 
+;; 	* undo-tree.el: Implement lazy tree drawing to significantly speed up 
+;; 	visualization of large trees + various more minor improvements.
+;; 
+;; 2012-09-25  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	Updated undo-tree package to version 0.5.5.
+;; 
+;; 	Small bug-fix to avoid hooks triggering an error when trying to save
+;; 	undo history in a buffer where undo is disabled.
+;; 
+;; 2012-09-11  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	Updated undo-tree package to version 0.5.4
+;; 
+;; 	Bug-fixes and improvements to persistent history storage.
+;; 
+;; 2012-07-18  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	Update undo-tree to version 0.5.3
+;; 
+;; 	* undo-tree.el: Cope gracefully with undo boundaries being deleted
+;; 	 (cf. bug#11774). Allow customization of directory to which undo
+;; 	history is
+;; 	 saved.
+;; 
+;; 2012-05-24  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	updated undo-tree package to version 0.5.2
+;; 
+;; 	* undo-tree.el: add diff view feature in undo-tree visualizer.
+;; 
+;; 2012-05-02  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	undo-tree.el: Update package to version 0.4
+;; 
+;; 2012-04-20  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	undo-tree.el: Update package to version 0.3.4
+;; 
+;; 	* undo-tree.el (undo-list-pop-changeset): fix pernicious bug causing
+;; 	undo history to be lost.
+;; 	(buffer-undo-tree): set permanent-local property.
+;; 	(undo-tree-enable-undo-in-region): add new customization option
+;; 	allowing undo-in-region to be disabled.
+;; 
+;; 2012-01-26  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	undo-tree.el: Fixed copyright attribution and Emacs status.
+;; 
+;; 2012-01-26  Toby S. Cubitt  <tsc25@cantab.net>
+;; 
+;; 	undo-tree.el: Update package to version 0.3.3
+;; 
+;; 2011-09-17  Stefan Monnier  <monnier@iro.umontreal.ca>
+;; 
+;; 	Add undo-tree.el
+;; 
+
 
 
 
