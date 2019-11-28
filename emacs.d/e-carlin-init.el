@@ -7,8 +7,6 @@
 (add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-
-
 (require 'evil)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)
@@ -22,7 +20,6 @@
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
 ;; evil-commentary for commenting out code
-(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/evil-commentary")
 (require 'evil-commentary)
 (evil-commentary-mode)
 
