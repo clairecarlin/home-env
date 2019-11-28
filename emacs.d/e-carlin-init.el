@@ -1,11 +1,11 @@
 (provide 'e-carlin-init)
 
-;; (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
-;; (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("gnu" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
-;; (package-initialize)
+(setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 ;; evil mode for vi keybindings
 (require 'undo-tree) ; evil needs undo-tree
@@ -116,23 +116,6 @@
 (require 'pyenv-mode)
 (pyenv-mode)
 
-;; elpy for python development
-(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/elpy")
-(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/company-mode") ;; dependency of elpy
-(require 'company)
-(require 'elpy)
-(elpy-enable)
-(setq elpy-rpc-python-command "~/.pyenv/shims/python")
-(setq elpy-rpc-virtualenv-path "~/.pyenv/shims/python")
-;; (setq elpy-rpc-virtualenv-path "~/.pyenv/versions/py3")
-(setq elpy-rpc-backend "jedi")
-(add-hook 'python-mode-hook 'my-python-customizations)
-(defun my-python-customizations ()
-  (define-key python-mode-map (kbd "C-]") 'elpy-goto-definition)
-  (define-key python-mode-map (kbd "C-x 4 C-]") 'elpy-goto-definition-other-window)
-  )
-(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
-
 ;; show line numbers
 (global-linum-mode t)
 (add-hook 'shell-mode-hook (lambda () (linum-mode -1)))
@@ -188,3 +171,14 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/src/e-carlin/home-env/emacs.d/e-carlin-yasnippets")) ; must be above yas-global-mode
 (yas-global-mode 1)
+
+;; lsp (language server protocol)
+(require 'lsp-mode)
+(require 'lsp-python-ms)
+;; (require 'lsp-ui)
+(require 'company-lsp)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'python-mode-hook #'lsp)
+;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(add-hook 'python-mode-hook 'flycheck-mode)
+(push 'company-lsp company-backends)
