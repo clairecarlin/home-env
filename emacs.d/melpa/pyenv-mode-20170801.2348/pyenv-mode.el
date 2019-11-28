@@ -4,6 +4,7 @@
 
 ;; Author: Artem Malyshev <proofit404@gmail.com>
 ;; URL: https://github.com/proofit404/pyenv-mode
+;; Package-Version: 20170801.2348
 ;; Version: 0.1.0
 ;; Package-Requires: ((pythonic "0.1.0"))
 
@@ -86,16 +87,16 @@
 
 ;;;###autoload
 (define-minor-mode pyenv-mode
-    "Minor mode for pyenv interaction.
+  "Minor mode for pyenv interaction.
 
 \\{pyenv-mode-map}"
-    :global t
-    :lighter ""
-    :keymap pyenv-mode-map
-    (if pyenv-mode
-        (add-to-list 'mode-line-misc-info pyenv-mode-mode-line-format)
-      (setq mode-line-misc-info
-            (delete pyenv-mode-mode-line-format mode-line-misc-info))))
+  :global t
+  :lighter ""
+  :keymap pyenv-mode-map
+  (if pyenv-mode
+      (add-to-list 'mode-line-misc-info pyenv-mode-mode-line-format)
+    (setq mode-line-misc-info
+          (delete pyenv-mode-mode-line-format mode-line-misc-info))))
 
 (provide 'pyenv-mode)
 
