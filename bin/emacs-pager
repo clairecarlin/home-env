@@ -4,7 +4,7 @@ import tempfile
 import fileinput
 import subprocess
 
-f = tempfile.NamedTemporaryFile(suffix='.emacs-pager')
+f = tempfile.NamedTemporaryFile(suffix='.emacs-pager', mode='w+')
 for l in fileinput.input():
   f.write(l)
 
