@@ -4,6 +4,7 @@
 
 ;; Author: Samuel Hoffstaetter <samuel@hoffstaetter.com>
 ;; Keywords: files, convenience, repository, project, source control
+;; Package-Version: 20190404.828
 ;; URL: https://github.com/hoffstaetter/find-file-in-repository
 ;; Version: 1.3
 
@@ -47,17 +48,17 @@
 
 ;;; Code:
 
-(defun ffir-shell-command (command file-separator working-dir)
-  "Executes 'command' and returns the list of printed files in
-   the form '((short/file/name . full/path/to/file) ...). The
-   'file-separator' character is used to split the file names
-   printed by the shell command and is usually set to \\n or \\0"
-  (let* ((default-directory working-dir)
-         (command-output (shell-command-to-string command))
-         (files (delete "" (split-string command-output file-separator))))
-    (mapcar (lambda (file)
-              (cons file (expand-file-name file working-dir)))
-            files)))
+(defun ffir-shell-command (command file-separator working-dir)                                                                                                        
+  "Executes 'command' and returns the list of printed files in                                                                                                        
+   the form '((short/file/name . full/path/to/file) ...). The                                                                                                         
+   'file-separator' character is used to split the file names                                                                                                         
+   printed by the shell command and is usually set to \\n or \\0"                                                                                                     
+  (let* ((default-directory working-dir)                                                                                                                              
+         (command-output (shell-command-to-string command))                                                                                                           
+         (files (delete "" (split-string command-output file-separator))))                                                                                            
+    (mapcar (lambda (file)                                                                                                                                            
+              (cons file (expand-file-name file working-dir)))                                                                                                        
+            files))) 
 
 (defun ffir-locate-dominating-file (file name)
   "Identical to 'locate-dominating-file' on modern Emacs. We
@@ -185,9 +186,8 @@
                                    repo-directory)))
           (funcall (ffir-when-ido 'ffir-ido-find-file 'ffir-find-file)
                    file-list))
-      ;; fall back on helm-find-file when no repository can be found
-      ;; TODO(e-carlin): Get rid of the ido stuff. I use helm
-      (let ((find-file (ffir-when-ido 'ido-find-file 'helm-find-files)))
+      ;; fall back on regular find-file when no repository can be found
+      (let ((find-file (ffir-when-ido 'ido-find-file 'find-file)))
         (command-execute find-file)))))
 
 ;;;###autoload
