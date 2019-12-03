@@ -24,6 +24,7 @@ _e-carlin_bashrc_init() {
         return
     fi
     local f
+# TODO(e-carlin): I think ubuntu bashrc is in a different place
     for f in \
         "$HOME"/.pre_bivio_bashrc \
         /etc/bashrc \
