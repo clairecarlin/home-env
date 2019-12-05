@@ -79,11 +79,8 @@
 (setq kill-buffer-query-functions nil)
 
 ;; Allow the evil escape characters to do their thing
-;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;; (add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 (setq comint-output-filter-functions
       (remove 'ansi-color-process-output comint-output-filter-functions))
-
 (add-hook 'shell-mode-hook
           (lambda ()
             ;; Disable font-locking in this buffer to improve performance
@@ -214,3 +211,7 @@
 ;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'python-mode-hook 'flycheck-mode)
 (push 'company-lsp company-backends)
+
+;; Display 80 char ruler for certain modes
+(add-hook 'python-mode-hook 'fci-mode)
+(add-hook 'sh-mode-hook 'fci-mode)

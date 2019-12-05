@@ -28,8 +28,16 @@ function g() {
 export -f g
 
 function gpy() {
-    local x=$1
-    shift
-    grep -iIrn --include="*.py"  "$x" .
+    grep -iIrn --include="*.py"  "$1" .
 }
 export -f gpy
+
+function gps() {
+    local x=$1
+    ps auxww | grep "[${x:0:1}]${x[@]:1}"
+}
+export -f gps
+
+function pstree(){
+    ps axf
+}
