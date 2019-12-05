@@ -55,4 +55,6 @@ fi
 export TERM=xterm-256color
 export PATH="$PATH:$HOME/bin"
 export PROMPT_COMMAND=""
-export PS1="\W\$(parse_git_branch)$ "
+if [[ ${PS1:-} ]]; then
+    export PS1="\W\$(parse_git_branch)$ "
+fi
