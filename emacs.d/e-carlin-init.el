@@ -50,6 +50,25 @@
 (setq split-width-threshold nil)
 (setq split-height-threshold 0)
 
+;; Always switch to new buffer when opening
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
+;; Open shell in current buffer
+(add-to-list 'display-buffer-alist
+                          '("^\\*shell\\*$" . (display-buffer-same-window)))
+
 ;; Don't prompt to kill buffers with running processes
 (setq kill-buffer-query-functions nil)
 
