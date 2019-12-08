@@ -7,8 +7,6 @@ import subprocess
 f = tempfile.NamedTemporaryFile(suffix='.emacs-pager', mode='w+')
 for l in fileinput.input():
   f.write(l)
-
 f.seek(0)
-f.read()
 subprocess.check_call(('emacsclient', f.name))
 f.close()
