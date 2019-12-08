@@ -208,10 +208,33 @@
 (require 'company-lsp)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'python-mode-hook #'lsp)
+(add-hook 'web-mode-hook #'lsp)
 ;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'python-mode-hook 'flycheck-mode)
 (push 'company-lsp company-backends)
 
 ;; Display 80 char ruler for certain modes
-(add-hook 'python-mode-hook 'fci-mode)
-(add-hook 'sh-mode-hook 'fci-mode)
+; This should display it in most relevant modes (ex when editing a file)
+(setq-default fill-column 80) ; fci reads this value to determin where to put line
+;; fci mode doesn't work right
+;; (define-globalized-minor-mode global-fci-mode fci-mode
+;;   (lambda ()
+;;     (if (and
+;;          (not (string-match "^\*.*\*$" (buffer-name)))
+;;          (not (eq major-mode 'dired-mode)))
+;;         (fci-mode 1))))
+;;   (global-fci-mode 1)
+; Disable when company completion
+(defvar-local company-fci-mode-on-p nil)
+(defun company-turn-off-fci (&rest ignore)
+  (when (boundp 'fci-mode)
+    (setq company-fci-mode-on-p fci-mode)
+    (when fci-mode (fci-mode -1))))
+(defun company-maybe-turn-on-fci (&rest ignore)
+  (when company-fci-mode-on-p (fci-mode 1)))
+(add-hook 'company-completion-started-hook 'company-turn-off-fci)
+(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+
+;; close some characters on opening
+(electric-pair-mode 1)

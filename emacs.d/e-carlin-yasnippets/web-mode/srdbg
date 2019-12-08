@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: srdbg
+# key: sg 
+# --
+srdbg($0)
