@@ -32,6 +32,12 @@ function gpy() {
 }
 export -f gpy
 
+
+function gstatic() {
+    grep -iIrn --exclude-dir="ext" "$1" .
+}
+export -f gstatic
+
 function gps() {
     local x=$1
     ps auxww | grep "[${x:0:1}]${x[@]:1}"
