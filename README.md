@@ -25,6 +25,14 @@ so it is easier to manage the configuration of it across systems.
 - Unpack it into a directory named `vscode`
 - move that directory into `/opt`
 
+## emacs setup
+- Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
+- `tar -zxvf emacs-VERSION.tar.gz`
+- `cd emacs-VERSION`
+- `./configure --with-x-toolkit=no # you may need to install other packages (ex libjpg) for this to work`
+- `make`
+- `sudo make install`
+
 ## Setup instructions
 *DISCLAIMER:* This installation will overwrite your existing dotfiles and any
 other files in it's way. It should move most files to a `*.old` but makes no
