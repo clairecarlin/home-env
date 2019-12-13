@@ -223,3 +223,6 @@
 
 ;; close some characters on opening
 (electric-pair-mode 1)
+
+;;disable company in shell
+(add-hook 'shell-mode-hook (lambda () (company-mode -1)) 'append)
