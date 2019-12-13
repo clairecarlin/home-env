@@ -226,3 +226,9 @@
 
 ;;disable company in shell
 (add-hook 'shell-mode-hook (lambda () (company-mode -1)) 'append)
+
+;; remove flickering when searching
+(setq-default
+ isearch-allow-scroll t ; TODO(e-carlin): what does this do?
+ lazy-highlight-cleanup nil ; TODO(e-carlin): what does this do?
+ lazy-highlight-initial-delay 0) ; this removes the flicker
