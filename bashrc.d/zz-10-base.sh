@@ -52,7 +52,6 @@ else
     export PAGER=$(type -p less)
 fi
 
-export TERM=xterm-256color
 export PATH="$PATH:$HOME/bin"
 export PROMPT_COMMAND=""
 if [[ ${PS1:-} ]]; then
