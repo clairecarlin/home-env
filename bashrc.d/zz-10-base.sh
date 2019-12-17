@@ -44,8 +44,11 @@ export -f e
 if [[ ${INSIDE_EMACS:-} =~ comint ]]; then
     export EDITOR=$(type -p emacsclient)
     export PAGER=ep
-#TODO(e-carlin): We shouldn't really set $TERM, but bivio sets it to dumb when
-# in emacs so this overrides that
+    # TODO(e-carlin): We shouldn't really set $TERM, but bivio sets it to dumb
+    # when in emacs so this overrides that. We could use
+    # (setq comint-terminfo-terminal "xterm-256color") I'm not sure what the
+    # correct val for $TERM is iTerm supports xterm-256color so go with that for
+    # now.
     export TERM=xterm-256color
     function e(){
         emacsclient "$@"
