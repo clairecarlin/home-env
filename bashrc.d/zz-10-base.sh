@@ -44,6 +44,9 @@ export -f e
 if [[ ${INSIDE_EMACS:-} =~ comint ]]; then
     export EDITOR=$(type -p emacsclient)
     export PAGER=ep
+#TODO(e-carlin): We shouldn't really set $TERM, but bivio sets it to dumb when
+# in emacs so this overrides that
+    export TERM=xterm-256color
     function e(){
         emacsclient "$@"
     }
