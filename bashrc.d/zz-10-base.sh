@@ -43,7 +43,7 @@ export -f e
 
 if [[ ${INSIDE_EMACS:-} =~ comint ]]; then
     export EDITOR=$(type -p emacsclient)
-    export PAGER=emacs-pager
+    export PAGER=ep
     function e(){
         emacsclient "$@"
     }
