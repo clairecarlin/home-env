@@ -40,7 +40,7 @@ export -f gstatic
 
 function gps() {
     local x=$1
-    ps auxww | grep "[${x:0:1}]${x[@]:1}"
+    ps auxww | grep -i "[${x:0:1}]${x[@]:1}"
 }
 export -f gps
 
