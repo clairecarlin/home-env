@@ -232,3 +232,7 @@
  isearch-allow-scroll t ; TODO(e-carlin): what does this do?
  lazy-highlight-cleanup nil ; TODO(e-carlin): what does this do?
  lazy-highlight-initial-delay 0) ; this removes the flicker
+
+;; slime mode for lisp
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
