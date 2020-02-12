@@ -206,6 +206,7 @@
 (require 'lsp-python-ms)
 (require 'lsp-ui)
 (require 'company-lsp)
+(setq lsp-signature-auto-activate nil) ;; disalbe bottom documentation popup
 (setq company-dabbrev-downcase 1)
 (setq company-idle-delay 0.01)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
@@ -236,3 +237,10 @@
 ;; slime mode for lisp
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
+
+;; possibly enable evil mode for some modes (I really only need vc-history). Oddly it seems like it is working w/o it
+;; (cl-loop for buffer-name in '("\\*sly-macroexpansion\\*" "\\*sly-description\\*"
+;;                               "\\*VC-history\\*" "COMMIT_EDITMSG" "CAPTURE-.*\\.org"
+;;                               "\\*Warnings\\*" "\\*cider-inspect\\*")
+;;          do (add-to-list 'evil-buffer-regexps
+;;                          (cons buffer-name 'emacs)))
