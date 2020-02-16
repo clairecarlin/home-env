@@ -7,19 +7,23 @@ This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
 ## Prerequisites
-- If you want to use emacs then have emacs installed.
-- If you want to use something like vi then install neovim.
-- If you want to use vscode then have it installed.
-- If you want copy and paste from emacs to go to your system clipboard install
-[xclip](https://github.com/astrand/xclip).
+- Emacs is my main editor. I currently use version 26.3. See the install instructions below.
 - I like to swap left ctrl and alt keys. On linux systems I use xmodmap and on
 macos I use [karabiner](https://pqrs.org/osx/karabiner/).
 - If using iTerm swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
 
+## Other editor options
+I also sometimes use vi, vim, neovim, and vscode. There is configuration
+contained within for how I like them configured but I don't update it
+because I use mostly emacs now. On systems without my emacs config I use vi and
+when I just want to look at a random file on my machine and not edit it sometimes
+I'll use vscode.
+
 ## vscode setup
-VSCode is my main text editor. I have it setup in [portable mode](https://code.visualstudio.com/docs/editor/portable)
+I have it setup in [portable mode](https://code.visualstudio.com/docs/editor/portable)
 so it is easier to manage the configuration of it across systems.
+
 ### vscode on linux
 - Download the tarball from the vscode downloads page
 - Unpack it into a directory named `vscode`
@@ -29,7 +33,7 @@ so it is easier to manage the configuration of it across systems.
 - Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
 - `tar -zxvf emacs-VERSION.tar.gz`
 - `cd emacs-VERSION`
-- `./configure --with-x-toolkit=no # you may need to install other packages (ex libjpg) for this to work`
+- `./configure --with-x-toolkit=no # you may need to install other packages (ex libjpg) if you desire them and your system doesn't have them`
 - `make`
 - `sudo make install`
 
@@ -45,8 +49,3 @@ change what makes sense for you.
 3. `cd home-env`
 4. `bash install.sh # shows you what will happen`
 5. `bash install.sh -c # applies changes. -c stands for "confirm"`
-6. `cd emacs.d/helm`
-7. `make`
-8. `sudo make install`
-9. `cd ../eply`
-10. `pip install .`

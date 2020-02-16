@@ -137,10 +137,6 @@
 (require 'emacs-pager)
 (add-to-list 'auto-mode-alist '("\\.emacs-pager$" . emacs-pager-mode))
 
-;; xclip to share clipboard between emacs and system
-(require 'xclip)
-(xclip-mode 1)
-
 ;; pyenv mode
 (require 'pyenv-mode)
 (pyenv-mode)
