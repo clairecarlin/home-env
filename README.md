@@ -1,26 +1,40 @@
 ## home-env
 This repository configures my "home environment" on all machines (personal and
-development). It configures dotfiles (ex .bashrc) as well as manages packages
+work). It configures dotfiles (ex .bashrc) as well as manages packages
 for editors (ex ctrlp for vim). It also sets up useful shell functions and aliases.
 
 This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
-## Prerequisites
-- Emacs is my main editor. I currently use version 26.3. See the install instructions below.
-- I like to swap left ctrl and alt keys. On linux systems I use xmodmap and on
-macos I use [karabiner](https://pqrs.org/osx/karabiner/).
-- If using iTerm swap [right alt with esc+](https://www.iterm2.com/faq.html) (
+## OS
+I work on macOS, Ubuntu, Fedora, and CentOS. My configuration should work across
+all of those systems
+
+### macOS
+- To swap left ctrl and alt keys use [karabiner](https://pqrs.org/osx/karabiner/)
+(on linux systems I use xmodmap which is one of the configuration files
+contained in this repo so you don't have to do anything manual).
+- In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
 
-## Other editor options
+## Firefox
+- I prefer to cycle through tabs in order not most recently used. To do so
+enter `about:config` in the address bar, type ctrl in the search box, double
+click `browser.ctrlTab.previews` so it's value becomes `false`.
+
+
+## Editor
+Emacs is my main editor. I currently use version 26.3. See the install instructions below.
+
+
+### Other editor options
 I also sometimes use vi, vim, neovim, and vscode. There is configuration
 contained within for how I like them configured but I don't update it
 because I use mostly emacs now. On systems without my emacs config I use vi and
 when I just want to look at a random file on my machine and not edit it sometimes
 I'll use vscode.
 
-## vscode setup
+### vscode setup
 I have it setup in [portable mode](https://code.visualstudio.com/docs/editor/portable)
 so it is easier to manage the configuration of it across systems.
 
@@ -29,7 +43,7 @@ so it is easier to manage the configuration of it across systems.
 - Unpack it into a directory named `vscode`
 - move that directory into `/opt`
 
-## emacs setup
+### emacs setup
 - Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
 - `tar -zxvf emacs-VERSION.tar.gz`
 - `cd emacs-VERSION`
