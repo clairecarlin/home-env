@@ -41,7 +41,7 @@ your existing configuration (or worse) I suggest reading through the sources
 and copying and pasting the things you need. Another option is to fork and
 change what makes sense for you.
 1. `mkdir -p ~/src/e-carlin`
-2. `cd $_ && git clone --recursive https://gitlab.com/e-carlin/home-env.git`
+2. `cd $_ && git clone --recursive git@git.sr.ht:~e-carlin/home-env`
 3. `cd home-env`
 4. `bash install.sh # shows you what will happen`
 5. `bash install.sh -c # applies changes. -c stands for "confirm"`
