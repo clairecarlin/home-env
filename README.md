@@ -47,7 +47,7 @@ so it is easier to manage the configuration of it across systems.
 - Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
 - `tar -zxvf emacs-VERSION.tar.gz`
 - `cd emacs-VERSION`
-- `./configure --with-x-toolkit=no # you may need to install other packages (ex libjpg) if you desire them and your system doesn't have them`
+- `./configure --with-x-toolkit=no --without-x # you may need to install other packages (ex libjpg) if you desire them and your system doesn't have them`
 - `make`
 - `sudo make install`
 
