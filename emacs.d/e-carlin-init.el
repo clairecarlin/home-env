@@ -73,7 +73,9 @@
 
 ;; Open shell in current buffer
 (add-to-list 'display-buffer-alist
-                          '("^\\*shell\\*$" . (display-buffer-same-window)))
+             '("^\\*shell\\*$" . (display-buffer-same-window)))
+;; Start shell in normal-mode
+(evil-set-initial-state 'shell-mode 'normal)
 
 ;; Don't prompt to kill buffers with running processes
 (setq kill-buffer-query-functions nil)
