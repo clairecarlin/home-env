@@ -8,7 +8,8 @@ alias gp="git push"
 alias gs="git status"
 alias k="clear"
 alias grep="grep --color=auto"
-alias ls="ls --color=auto"
+# OSX uses BSD ls which supports -G for color
+ls --color=auto &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
 alias la="ls -all"
 alias ll="ls -l"
 alias reset_keymap="setxkbmap -layout us"
