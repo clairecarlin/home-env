@@ -21,30 +21,30 @@ alias v="vim ."
 function g() {
     local x="$1"
     shift
-    echo "${@-.}"
     grep -iIrn --exclude-dir='.git' --exclude='*~' --exclude='.#*' --exclude='*/.#*' \
-         "$x" --include='*.py'
-    #${@-.} 2>/dev/null
+         "$x" "${@-.}" 2>/dev/null
 }
 export -f g
 
 function gpy() {
-    grep -iIrn --include="*.py"  "$1" .
+    g "$1"  --include="*.py" .
 }
 export -f gpy
 
 
 function gstatic() {
-    grep -iIrn --exclude-dir="ext" "$1" .
+    g "$1"  --exclude-dir="ext" .
 }
 export -f gstatic
 
+#TODO(e-carlin): this doesn't work right on macos
 function gps() {
     local x=$1
     ps auxww | grep -i "[${x:0:1}]${x[@]:1}"
 }
 export -f gps
 
+#TODO(e-carlin): this doesn't work right on macos
 function pstree(){
     ps axf
 }
