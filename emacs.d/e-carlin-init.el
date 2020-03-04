@@ -242,3 +242,7 @@
 ;;                               "\\*Warnings\\*" "\\*cider-inspect\\*")
 ;;          do (add-to-list 'evil-buffer-regexps
 ;;                          (cons buffer-name 'emacs)))
+
+;; revert all buffers when disk contents changes useful for switching git branches
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Reverting.html
+(global-auto-revert-mode t)
