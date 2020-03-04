@@ -17,17 +17,29 @@ alias sbp="source ~/.bash_profile"
 alias vim="nvim" # must be before alias v
 alias v="vim ."
 
+function delete-branches() {
+    if [[ $1 == '-c' ]]; then
+        git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
+    else
+        git checkout master && git branch --merged | egrep -v "(^\*|master)"
+    fi
+}
+export -f delete-branches
+
 # From: https://github.com/biviosoftware/home-env/blob/master/bashrc.d/zz-10-base.sh#L296
 function g() {
     local x="$1"
     shift
-    grep -iIrn --exclude-dir='.git' --exclude='*~' --exclude='.#*' --exclude='*/.#*' \
-         "$x" "${@-.}" 2>/dev/null
+    # *~ is emacs backup file
+    # #* is emacs autosave file
+    grep -iIrn --exclude-dir='.git' --exclude='*~' --exclude='#*' \
+       "$x" "${@-.}"   2>/dev/null
 }
 export -f g
 
 function gpy() {
-    g "$1"  --include="*.py" .
+    # can't use g() because --exclude's override --include
+    grep -iIrn --include="*.py" "$1"  .
 }
 export -f gpy
 
