@@ -151,6 +151,10 @@
 ;; Keep underscores within a word boundary
 (add-hook 'python-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" python-mode-syntax-table)))
+;; TODO(e-carlin): Simplify, superword-mode and the code above do the same thing
+(add-hook 'c++-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
+;; (add-hook 'c++-mode-hook #'superword-mode)
 
 ;; prettier code formatting for js
 (require 'prettier-js)
