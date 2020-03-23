@@ -138,6 +138,8 @@
 (add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d/emacs-pager.el")
 (require 'emacs-pager)
 (add-to-list 'auto-mode-alist '("\\.emacs-pager$" . emacs-pager-mode))
+;; color 750 lines (default is 500)
+(setq emacs-pager-max-line-coloring 750)
 
 ;; pyenv mode
 (require 'pyenv-mode)
@@ -250,3 +252,8 @@
 ;; revert all buffers when disk contents changes useful for switching git branches
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Reverting.html
 (global-auto-revert-mode t)
+
+;; Use "linux" c-style
+;; https://www.emacswiki.org/emacs/IndentingC
+(setq c-default-style "linux"
+        c-basic-offset 4)
