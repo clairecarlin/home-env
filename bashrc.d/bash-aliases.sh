@@ -44,10 +44,10 @@ function gpy() {
 export -f gpy
 
 
-function gstatic() {
+function gext() {
     g "$1"  --exclude-dir="ext" .
 }
-export -f gstatic
+export -f gext
 
 #TODO(e-carlin): this doesn't work right on macos
 function gps() {

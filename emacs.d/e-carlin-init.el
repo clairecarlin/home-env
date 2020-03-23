@@ -236,13 +236,17 @@
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
-;; possibly enable evil mode for some modes (I really only need vc-history). Oddly it seems like it is working w/o it
+;;possibly enable evil mode for some modes (I really only need vc-history). Oddly it seems like it is working w/o it
+;; This doesn't work... :(
 ;; (cl-loop for buffer-name in '("\\*sly-macroexpansion\\*" "\\*sly-description\\*"
 ;;                               "\\*VC-history\\*" "COMMIT_EDITMSG" "CAPTURE-.*\\.org"
 ;;                               "\\*Warnings\\*" "\\*cider-inspect\\*")
 ;;          do (add-to-list 'evil-buffer-regexps
 ;;                          (cons buffer-name 'emacs)))
+;; (add-to-list 'evil-buffer-regexps
+;;              '("\\*VC-history\\*" . emacs))
 
-;; revert all buffers when disk contents changes useful for switching git branches
+;; revert all buffers when disk contents changes. Useful for updateing buffers
+;; when git branch changes or watching files being written to like `tail -f`
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Reverting.html
 (global-auto-revert-mode t)
