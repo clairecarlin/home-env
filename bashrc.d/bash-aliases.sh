@@ -14,8 +14,6 @@ alias la="ls -all"
 alias ll="ls -l"
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
-alias vim="nvim" # must be before alias v
-alias v="vim ."
 
 function delete-branches() {
     if [[ $1 == '-c' ]]; then
@@ -60,3 +58,9 @@ export -f gps
 function pstree(){
     ps axf
 }
+export -f pstree
+
+function pscpu(){
+    ps auxww --sort=-pcpu | head -n 10
+}
+export -f pscpu
