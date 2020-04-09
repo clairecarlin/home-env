@@ -1,5 +1,6 @@
 alias d_container_id="docker ps | cut -f1 -d ' ' | awk 'NR==2{printf \"%s\", \$1}' | xclip -selection c"
 alias g_files_in_commit="git diff-tree --no-commit-id --name-only -r"
+alias gbg="git branch | grep -i"
 alias gcam="git commit -a -m"
 alias gch="git checkout"
 alias gd="git diff"
@@ -64,3 +65,9 @@ function pscpu(){
     ps auxww --sort=-pcpu | head -n 10
 }
 export -f pscpu
+
+
+function findn(){
+   find . -name "*$1*"
+}
+export -f findn
