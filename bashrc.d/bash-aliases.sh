@@ -71,3 +71,9 @@ function findn(){
    find . -name "*$1*"
 }
 export -f findn
+
+function sirepo_pr_comments() {
+    curl -s "https://api.github.com/repositories/37476480/pulls/$1/comments" | jq .[].body | sed G > c.txt
+    echo 'results in c.txt'
+}
+export -f sirepo_pr_comments
