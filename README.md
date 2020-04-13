@@ -6,6 +6,9 @@ for editors (ex ctrlp for vim). It also sets up useful shell functions and alias
 This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
+## TODO tracker
+Available [here](https://todo.sr.ht/~e-carlin/home-env).
+
 ## OS
 I work on macOS, Ubuntu, Fedora, and CentOS. My configuration should work across
 all of those systems
