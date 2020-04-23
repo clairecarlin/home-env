@@ -68,7 +68,14 @@ export -f pscpu
 
 
 function findn(){
-   find . -name "*$1*"
+    local path="$1"
+    local name="$2"
+    if [[ -z "$2" ]]; then
+        path="."
+        name="$1"
+    fi
+    # stderr redirection makes it so permission denied errors are not displayed
+   find "$path" -iname "*$name*" 2>/dev/null
 }
 export -f findn
 
