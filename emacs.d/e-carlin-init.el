@@ -261,3 +261,5 @@
 ;; https://www.emacswiki.org/emacs/IndentingC
 (setq c-default-style "linux"
         c-basic-offset 4)
+
+(setq mac-command-modifier 'super)
