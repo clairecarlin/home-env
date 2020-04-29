@@ -1,9 +1,6 @@
 [submodule "site/pack/git-plugins/start/ctrlp.vim"]
     path = site/pack/git-plugins/start/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "emacs.d/evil"]
-	path = emacs.d/evil
-	url = https://github.com/emacs-evil/evil
 [submodule "emacs.d/flycheck"]
 	path = emacs.d/flycheck
 	url = https://github.com/flycheck/flycheck.git
