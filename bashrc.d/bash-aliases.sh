@@ -1,5 +1,6 @@
 alias d_container_id="docker ps | cut -f1 -d ' ' | awk 'NR==2{printf \"%s\", \$1}' | xclip -selection c"
 alias g_files_in_commit="git diff-tree --no-commit-id --name-only -r"
+alias bg="git branch --sort=-committerdate"
 alias gbg="git branch | grep -i"
 alias gcam="git commit -a -m"
 alias gch="git checkout"
@@ -15,14 +16,6 @@ alias la="ls -A"
 alias ll='ls -l --hide="*.pyc" --block-size=M'
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
-
-function gb() {
-    # gb (Git Branch) - sorts branch names by commit date (least to most recent)
-    # Helpful in seeing what I worked on most recently
-    git for-each-ref --sort=-committerdate refs/heads/ | cut -d$'\t' -f2 \
-        | sed 's/refs\/heads\///' | tac
-}
-export -f gb
 
 function delete-branches() {
     if [[ $1 == '-c' ]]; then
