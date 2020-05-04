@@ -16,6 +16,14 @@ alias ll='ls -l --hide="*.pyc" --block-size=M'
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
 
+function gb() {
+    # gb (Git Branch) - sorts branch names by commit date (least to most recent)
+    # Helpful in seeing what I worked on most recently
+    git for-each-ref --sort=-committerdate refs/heads/ | cut -d$'\t' -f2 \
+        | sed 's/refs\/heads\///' | tac
+}
+export -f gb
+
 function delete-branches() {
     if [[ $1 == '-c' ]]; then
         git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
