@@ -157,6 +157,8 @@
 (add-hook 'c++-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 ;; (add-hook 'c++-mode-hook #'superword-mode)
+(add-hook 'sh-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 
 ;; prettier code formatting for js
 (require 'prettier-js)
