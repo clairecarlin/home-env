@@ -19,7 +19,7 @@ if ! (($confirm)); then
     echo "Running in debug mode. Use -c to confirm changes."
 fi
 
-# POST: no whitespace in filenames so ok
+# POSIT: no whitespace in filenames so ok
 for f in $(find dot bin nvim site -name '*' -type f); do
     src=$PWD/$f
     cmd='ln -s'
@@ -77,37 +77,3 @@ for f in gitconfig netrc; do
 	install -m 0600 "$src" "$dst"
     fi
 done
-
-
-linux() {
-    # only need vscode in xwindow env
-    if xset q &>/dev/null; then
-        dst="/opt/vscode/data"
-        if [ -e $dst ]; then
-            rm -rf "$dst"
-        fi
-        ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
-        sudo ln -sf "/opt/vscode/bin/code" "/usr/bin"
-    fi
-}
-
-darwin() {
-    dst="/Applications/code-portable-data"
-    if [ -e $dst ]; then
-        rm -rf "$dst"
-    fi
-    ln -sf "$HOME/src/e-carlin/home-env/vscode.d" "$dst"
-}
-
-
-OS="$(uname -a | cut -d ' ' -f1)"
-if [[ "${OS}" == "Linux" ]]; then
-    linux
-elif [[ "$OS" == "Darwin" ]]; then
-    darwin
-else
-    echo "$OS unrecognized"
-    exit 1
-fi
-unset -f linux
-unset -f darwin
