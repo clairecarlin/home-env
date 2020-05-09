@@ -56,6 +56,11 @@ function gps() {
 }
 export -f gps
 
+function gsump() {
+   g --exclude-dir="Arduino" "$@"
+}
+export -f gsump
+
 #TODO(e-carlin): this doesn't work right on macos
 function pstree(){
     ps axf
