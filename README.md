@@ -20,6 +20,10 @@ contained in this repo so you don't have to do anything manual).
 - In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
 
+### Ubuntu
+- [Remove terminal transparency](https://askubuntu.com/questions/1076036/how-to-remove-all-window-transparency-effects)
+- `sudo kbdrate -r 30 -d 250` # Make keys go brrr
+
 ## Firefox
 - I prefer to cycle through tabs in order not most recently used. To do so
 enter `about:config` in the address bar, type ctrl in the search box, double
