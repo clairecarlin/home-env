@@ -23,6 +23,7 @@ search for "esc+").
 ### Ubuntu
 - [Remove terminal transparency](https://askubuntu.com/questions/1076036/how-to-remove-all-window-transparency-effects)
 - `sudo kbdrate -r 30 -d 250` # Make keys go brrr
+- `Windows + p` # Cycle through display settings to get to mirror display
 
 ## Firefox
 - I prefer to cycle through tabs in order not most recently used. To do so
