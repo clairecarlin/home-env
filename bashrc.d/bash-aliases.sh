@@ -39,7 +39,7 @@ export -f g
 
 function gpy() {
     # can't use g() because --exclude's override --include
-    grep -iIrn --include="*.py" "$1"  .
+    grep -iIrn$2 --include="*.py" "$1"  .
 }
 export -f gpy
 
