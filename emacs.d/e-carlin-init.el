@@ -265,3 +265,13 @@
         c-basic-offset 4)
 
 (setq mac-command-modifier 'super)
+
+(global-set-key  (kbd "C-x C-o") 'run-supervisor-server)
+(defun run-supervisor-server ()
+  (interactive)
+  ;; todo variable name for shell
+  (generate-new-buffer "*shell* supervisor")
+  (shell "*shell* supervisor")
+  (set-buffer "*shell* supervisor")
+  (insert "cd ~/src/radiasoft/sirepo && bash ~/src/radiasoft/sirepo/etc/run-supervisor.sh")
+  (comint-send-input))
