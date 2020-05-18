@@ -24,7 +24,7 @@
         (select-window (next-window))
         (set-window-buffer nil supervisor)))
     (window-configuration-to-register ?s)
-    ;; (set-window-configuration config)
+    (set-window-configuration config)
     )
   )
 )
