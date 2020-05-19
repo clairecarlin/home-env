@@ -4,17 +4,16 @@
 (defun start-supervisor-server ()
   (interactive)
   (let ((config (current-window-configuration)))
+    (window-configuration-to-register ?f)
     (unwind-protect
-
     (cl-flet ((shell-name (n)
                        (concatenate 'string "*shell* " n))
-           (create-shell (n) ;; TODO(e-carlin): if server started then restart
-                         (progn (generate-new-buffer n)
-                                ;; TODO(e-carlin): cd and start
-                                ;; (insert "sleep 100")
-                                ;; (comint-send-input)
-                                (shell n)
-                                (set-buffer n))))
+              (create-shell (n)
+                            (progn (shell (set-buffer (get-buffer-create n)))
+                                   (comint-interrupt-subjob)
+                                   (erase-buffer)
+                                   (insert "ls")
+                                   (comint-send-input))))
       (let ((server (shell-name "server"))
             (supervisor (shell-name "supervisor"))) ;; TODO(e-carlin): there must be a better way to do this (create-shell supervisor)
         (create-shell supervisor)
@@ -24,8 +23,7 @@
         (select-window (next-window))
         (set-window-buffer nil supervisor)))
     (window-configuration-to-register ?s)
-    (set-window-configuration config)
+    ;; (set-window-configuration config)
     )
-  )
-)
+  ))
 (provide 'e-radiasoft) ;;; e-radiasoft.el ends here
