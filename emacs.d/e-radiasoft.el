@@ -5,14 +5,16 @@
   (interactive)
   (let ((config (current-window-configuration)))
     (unwind-protect
-    (cl-flet ((create-shell (n)
-                            (progn (shell (set-buffer (get-buffer-create (concat "*shell* " n))))
+        (cl-flet ((create-shell (n)
+                                (let ((s (concat "*shell* " n)))
+                            (progn (shell (set-buffer (get-buffer-create s)))
                                    (comint-interrupt-subjob)
                                    (erase-buffer)
                                    (insert (concat "cd ~/src/radiasoft/sirepo" " && " " bash etc/run-" n ".sh sbatch"))
                                    (comint-send-input)
                                    ;; TODO(e-carlin): I don't message here, I just want to return a string
                                    (message "foo")
+                                  )
                                    )))
       (let ((supervisor (create-shell "supervisor")))
         (create-shell "server")
