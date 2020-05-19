@@ -4,15 +4,14 @@
 (defun start-supervisor-server ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (window-configuration-to-register ?f)
     (unwind-protect
     (cl-flet ((create-shell (n)
                             (progn (shell (set-buffer (get-buffer-create (concat "*shell* " n))))
                                    (comint-interrupt-subjob)
                                    (erase-buffer)
-                                   (insert (concat "cd ~/src/radiasoft/sirepo" " && " " bash etc/run-" n ".sh local"))
+                                   (insert (concat "cd ~/src/radiasoft/sirepo" " && " " bash etc/run-" n ".sh sbatch"))
                                    (comint-send-input)
-                                   ;; TODO(e-carlin): I don't really want a message here, I just want to return a string
+                                   ;; TODO(e-carlin): I don't message here, I just want to return a string
                                    (message "foo")
                                    )))
       (let ((supervisor (create-shell "supervisor")))
@@ -23,7 +22,7 @@
         (set-window-buffer nil "*shell* supervisor")
         ))
     (window-configuration-to-register ?s)
-    ;; (set-window-configuration config)
+    (set-window-configuration config)
     )
     ))
 (provide 'e-radiasoft) ;;; e-radiasoft.el ends here
