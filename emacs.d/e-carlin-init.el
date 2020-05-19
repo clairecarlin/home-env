@@ -7,6 +7,8 @@
 (add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(require 'e-radiasoft)
+
 (require 'evil)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)
