@@ -18,14 +18,14 @@ alias ll='ls -l --hide="*.pyc" --block-size=M'
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
 
-function delete-branches() {
+function g_delete_branches() {
     if [[ $1 == '-c' ]]; then
         git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
     else
         git checkout master && git branch --merged | egrep -v "(^\*|master)"
     fi
 }
-export -f delete-branches
+export -f g_delete_branches
 
 # From: https://github.com/biviosoftware/home-env/blob/master/bashrc.d/zz-10-base.sh#L296
 function g() {
