@@ -1,6 +1,7 @@
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+export -f parse_git_branch
 
 linux() {
     # only use xmodmap if in xwindow env
@@ -58,6 +59,9 @@ else
     export PAGER=$(type -p less)
 fi
 
+s=10000
+export HISTSIZE=$s
+export HISTFILESIZE=$s
 export PATH="$PATH:$HOME/bin"
 export PROMPT_COMMAND=""
 if [[ ${PS1:-} ]]; then
