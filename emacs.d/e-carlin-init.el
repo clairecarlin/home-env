@@ -164,11 +164,15 @@
 (pyenv-mode)
 
 ;; show line numbers
+;; TODO(e-carlin): come on this is gross
 (global-linum-mode t)
 (add-hook 'shell-mode-hook
           (lambda ()
             (linum-mode -1)))
 (add-hook 'dired-mode-hook
+          (lambda ()
+            (linum-mode -1)))
+(add-hook 'markdown-mode-hook
           (lambda ()
             (linum-mode -1)))
 
