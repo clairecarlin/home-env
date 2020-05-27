@@ -82,7 +82,7 @@ function findn(){
         name="$1"
     fi
     # stderr redirection makes it so permission denied errors are not displayed
-   find "$path" -iname "*$name*" 2>/dev/null
+   find "$path" -iname "*$name*" -not -name "*.pyc" 2>/dev/null
 }
 export -f findn
 
