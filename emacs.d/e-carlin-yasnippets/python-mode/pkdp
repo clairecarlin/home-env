@@ -2,4 +2,4 @@
 # name: PKDP
 # key: pp
 # --
-pkdp('$0')
+pkdp('$1 {}', $2)
