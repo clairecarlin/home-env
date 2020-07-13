@@ -2,4 +2,4 @@
 # name: srdbg
 # key: sg
 # --
-srdbg('$0');
+srdbg(\`$0\`);
