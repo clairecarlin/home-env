@@ -18,6 +18,7 @@
 (require 'srefactor-lisp)
 
 (require 'evil)
+(customize-set-variable 'evil-want-minibuffer t)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)
 (require 'key-chord)
