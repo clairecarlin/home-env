@@ -7,7 +7,6 @@ alias gch="git checkout"
 alias gd="git diff --color"
 alias gg="git log --graph --decorate --simplify-by-decoration --oneline"
 alias gl="git log --abbrev-commit --pretty=oneline"
-alias gp="git push"
 alias gs="git status"
 alias k="clear"
 alias grep="grep --color=auto"
@@ -37,6 +36,17 @@ function g() {
        "$x" "${@-.}"   2>/dev/null
 }
 export -f g
+
+function gp() {
+    if git push ; then
+        return
+    fi
+    local b=$(git rev-parse --abbrev-ref HEAD)
+    if ! git config --get "branch.$b.merge" ; then
+        git push --set-upstream origin "$b"
+    fi
+}
+export -f gp
 
 function gpy() {
     # can't use g() because --exclude's override --include
