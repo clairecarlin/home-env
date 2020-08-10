@@ -14,9 +14,10 @@ I work on macOS, Ubuntu, Fedora, and CentOS. My configuration should work across
 all of those systems
 
 ### macOS
-- To swap left ctrl and alt keys use [karabiner](https://pqrs.org/osx/karabiner/)
-(on linux systems I use xmodmap which is one of the configuration files
-contained in this repo so you don't have to do anything manual).
+- To swap left ctrl and alt keys use [karabiner](https://pqrs.org/osx/karabiner/).
+Specifically I do:
+left\_alt (equal to \`left_option\`) to left\_control and
+left\_control to left\_option
 - In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
 
