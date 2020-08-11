@@ -242,7 +242,6 @@
 (require 'lsp-mode)
 (require 'lsp-python-ms)
 (require 'lsp-ui)
-;; (require 'company-lsp)
 (setq lsp-signature-auto-activate nil) ;; disalbe bottom documentation popup
 (setq company-dabbrev-downcase 1)
 (setq company-idle-delay 0.01)
@@ -254,10 +253,9 @@
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 (add-hook 'web-mode-hook #'lsp)
-;; (push 'company-lsp company-backends)
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
-;; (setq lsp-completion-provider :capf)
+(setq lsp-completion-provider :capf)
 
 ;; show column-number so I know when I'm at 80 cols
 (column-number-mode 1)
