@@ -10,14 +10,10 @@
 ;;; Generated autoloads from flymake-json.el
 
 (autoload 'flymake-json-load "flymake-json" "\
-Configure flymake mode to check the current buffer's javascript syntax.
-
-\(fn)" t nil)
+Configure flymake mode to check the current buffer's javascript syntax." t nil)
 
 (autoload 'flymake-json-maybe-load "flymake-json" "\
-Call `flymake-json-load' if this file appears to be json.
-
-\(fn)" t nil)
+Call `flymake-json-load' if this file appears to be json." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flymake-json" '("flymake-json-")))
 

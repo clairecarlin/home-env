@@ -13,9 +13,7 @@
 Offer contextual menu with actions based on current tag in scope.
 
 Each menu item added returns a token for what type of refactoring
-to perform.
-
-\(fn)" t nil)
+to perform." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "srefactor" '("srefactor-")))
 
@@ -25,7 +23,7 @@ to perform.
 ;;;;;;  0))
 ;;; Generated autoloads from srefactor-lisp.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "srefactor-lisp" '("second-token" "srefactor-" "orig-format-type" "recursive-p" "first-token" "format-type" "cur-buf" "comment-" "next-token" "tok" "lexemes" "ignore-num")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "srefactor-lisp" '("comment-" "cur-buf" "first-token" "format-type" "ignore-num" "lexemes" "next-token" "orig-format-type" "recursive-p" "second-token" "srefactor-" "tok")))
 
 ;;;***
 

@@ -67,7 +67,7 @@ ROOTPROJ is nil, sinc there is only one project for a directory tree.
 
 (add-to-list 'ede-project-class-files (ede-project-autoload :name "Arduino sketch" :file 'ede-arduino :proj-root-dirmatch (ede-project-autoload-dirmatch :fromconfig (expand-file-name ede-arduino-preferences-file) :configregex "^sketchbook.path=\\([^\n]+\\)$" :configregexidx 1) :proj-file 'ede-arduino-file :proj-root 'ede-arduino-root :load-type 'ede-arduino-load :class-sym 'ede-arduino-project :safe-p t :new-p t) t)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ede-arduino" '("ede-" "project-" "cedet-arduino-serial-monitor")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ede-arduino" '("cedet-arduino-serial-monitor" "ede-" "project-")))
 
 ;;;***
 
@@ -77,9 +77,7 @@ ROOTPROJ is nil, sinc there is only one project for a directory tree.
 
 (autoload 'flycheck-arduino-setup "flycheck-arduino" "\
 Setup Flycheck Arduino.
-Add `arduino' to `flycheck-checkers'.
-
-\(fn)" t nil)
+Add `arduino' to `flycheck-checkers'." t nil)
 
 ;;;***
 
