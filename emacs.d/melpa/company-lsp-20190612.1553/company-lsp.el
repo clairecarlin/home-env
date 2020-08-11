@@ -423,7 +423,7 @@ Return a list of strings as the completion candidates."
                       ((sequencep response) response)))
          (candidates (mapcar (lambda (item)
                                (company-lsp--make-candidate item prefix))
-                             (lsp--sort-completions items)))
+                             (lsp-completion--sort-completions items)))
          (server-id (lsp--client-server-id (lsp--workspace-client lsp--cur-workspace)))
          (should-filter (or (eq company-lsp-cache-candidates t)
                             (and (null company-lsp-cache-candidates)
