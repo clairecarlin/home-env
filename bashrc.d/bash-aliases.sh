@@ -38,7 +38,7 @@ function g() {
 export -f g
 
 function gp() {
-    if git push ; then
+    if git push "$@" ; then
         return
     fi
     local b=$(git rev-parse --abbrev-ref HEAD)

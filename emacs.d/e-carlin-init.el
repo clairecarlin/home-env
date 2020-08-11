@@ -255,6 +255,9 @@
 (add-hook 'python-mode-hook #'lsp)
 (add-hook 'web-mode-hook #'lsp)
 (push 'company-lsp company-backends)
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+;; (setq lsp-completion-provider :capf)
 
 ;; show column-number so I know when I'm at 80 cols
 (column-number-mode 1)
