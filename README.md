@@ -56,6 +56,7 @@ yum `yum install libjansson #maybe devel`. I need to refine this process.
 - `M-x lsp-python-ms-update-server`
 - rm dirs in emacs.d/melpa then eval-buffer e-carlin-pack-install-helper.el
 (make sure that file has up to date packages found in dot/emacs)
+- `M-x toggle-debug-on-error`
 
 ### Other editor options
 I also sometimes use vi, vim, neovim, and vscode. There is configuration
