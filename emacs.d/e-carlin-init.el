@@ -303,3 +303,6 @@
             (load "dired-x")
             (setq dired-omit-files (concat dired-omit-files "|\\.pyc$"))))
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+
+;; cleanup whitespace (ex trailing spaces)
+(add-hook 'before-save-hook 'whitespace-cleanup)
