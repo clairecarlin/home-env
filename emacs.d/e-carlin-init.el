@@ -305,4 +305,5 @@
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
 
 ;; cleanup whitespace (ex trailing spaces)
-(add-hook 'before-save-hook 'whitespace-cleanup)
+;; (add-hook 'before-save-hook 'whitespace-cleanup) ; this seemed to be doing too much (especially in js files))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
