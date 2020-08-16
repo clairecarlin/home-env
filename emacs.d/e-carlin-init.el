@@ -17,6 +17,7 @@
 (require 'srefactor)
 (require 'srefactor-lisp)
 
+(setq evil-toggle-key "C-q")
 (require 'evil)
 (customize-set-variable 'evil-want-minibuffer t)
 (evil-mode 1)
