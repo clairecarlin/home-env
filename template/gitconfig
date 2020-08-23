@@ -1,13 +1,12 @@
 # FIRST TIME: replace the <values>
 [user]
-    name = <git-user>
-    email = <git-email>
+    name = e-carlin
+    email = evan@carlin.com
 [core]
     excludesfile = ~/.gitignore_global
     filemode = true
 [pager]
     branch = false
-    diff = false
 # If not git 2.x, you may have to comment these out
 [push]
     default = simple
