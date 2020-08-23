@@ -40,3 +40,10 @@ _e-carlin_bashrc_init() {
 
 _e-carlin_bashrc_init
 unset -f _e-carlin_bashrc_init
+
+
+#For personal finances ansible conf, ugh
+f="/home/vagrant/pyenv/.pyenvrc"
+if [ -f "$f" ]; then
+    source f
+fi
