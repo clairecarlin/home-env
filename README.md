@@ -44,7 +44,7 @@ may have to mess around with directory/file permissions for the PKG\_CONFIG\_PAT
 `pkg-config --variable pc_path pkg-config` will show you the path being used. For
 me `export PKG\_CONFIG\_PATH=...` didn't work. I had to add r/w for group permissions
 on the pkgconfig folder where jansson.pc was installed and tried installing from
-yum `yum install libjansson #maybe devel`. I need to refine this process.
+yum `yum install jansson-devel`. I need to refine this process.
 - Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
 - `tar -zxvf emacs-VERSION.tar.gz`
 - `cd emacs-VERSION`
