@@ -6,6 +6,9 @@ for editors (ex ctrlp for vim). It also sets up useful shell functions and alias
 This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
+To install: `curl -s -L https://git.sr.ht/~e-carlin/home-env/blob/master/install.sh | bash`
+
+
 ## TODO tracker
 Available [here](https://todo.sr.ht/~e-carlin/home-env).
 
