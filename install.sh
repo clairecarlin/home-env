@@ -12,7 +12,7 @@ function main() {
         cd "$repo"
         git pull -q
     else
-        git clone -q "git@git.sr.ht:~e-carlin/$repo"
+        git clone --recursive -q "git@git.sr.ht:~e-carlin/$repo"
     fi
 
     cd "$HOME/src/e-carlin/$repo"
