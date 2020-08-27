@@ -15,7 +15,7 @@ function main() {
     mkdir e
     cd e
     wget https://ftp.gnu.org/pub/gnu/emacs/emacs-27.1.tar.gz
-    tar -zxf emacs-27.1
+    tar -zxf emacs-27.1.tar.gz
     cd emacs-27.1
     ./configure --with-x-toolkit=no --without-x
     make
