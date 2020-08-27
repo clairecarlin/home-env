@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 function main() {
     if emacs --version; then
         echo "Existing emacs found please uninstall"
