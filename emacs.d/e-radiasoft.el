@@ -1,5 +1,5 @@
 (defun create-shell (name command)
-  (let ((s (concat "*shell*" name)))
+  (let ((s (concat "*shell* " name)))
     (progn
       (shell (set-buffer (get-buffer-create s)))
       ;; TODO(e-carlin): this makes sure that the bashrc is sourced before
@@ -59,6 +59,17 @@
   (interactive)
   (let ((config (current-window-configuration)))
     (create-shell "server" "cd ~/src/radiasoft/sirepo && bash  etc/run-auth-email.sh")
+    (delete-other-windows)
+    (window-configuration-to-register ?s)
+    (set-window-configuration config)))
+
+;; TODO(e-carlin): lots of repeated code
+(global-set-key (kbd "C-c sj")
+                'jupyterhub-test)
+(defun jupyterhub-test ()
+  (interactive)
+  (let ((config (current-window-configuration)))
+    (create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
