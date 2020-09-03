@@ -6,6 +6,9 @@ for editors (ex ctrlp for vim). It also sets up useful shell functions and alias
 This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
+To install: `curl -s -L https://git.sr.ht/~e-carlin/home-env/blob/master/install.sh | bash`
+
+
 ## TODO tracker
 Available [here](https://todo.sr.ht/~e-carlin/home-env).
 
@@ -35,22 +38,7 @@ click `browser.ctrlTab.previews` so it's value becomes `false`.
 ## Editor
 Emacs is my main editor. I currently use version 27.1. It has faster json
 support which make lsp (language server protocol) work better.
-To install:
-- First you will need [jansson](https://digip.org/jansson/)(json parsing lib)
-- You can possibly install from a package manager or build from source
-- Getting emacs to recognize it can be a pain. When you `./configure` emacs
-search the output for `jansson` to make sure it was recognized and used. You
-may have to mess around with directory/file permissions for the PKG\_CONFIG\_PATH.
-`pkg-config --variable pc_path pkg-config` will show you the path being used. For
-me `export PKG\_CONFIG\_PATH=...` didn't work. I had to add r/w for group permissions
-on the pkgconfig folder where jansson.pc was installed and tried installing from
-yum `yum install jansson-devel`. I need to refine this process.
-- Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
-- `tar -zxvf emacs-VERSION.tar.gz`
-- `cd emacs-VERSION`
-- `./configure --with-x-toolkit=no --without-x # you may need to install other packages (ex libjpg) if you desire them and your system doesn't have them`
-- `make`
-- `sudo make install`
+To install: `bash install-emacs.sh`
 ### Usefule emacs commands during install/setup:
 - `M-x eval-expression RET (functionp 'json-serialize) RET ;(should be t)`
 - `M-x lsp-python-ms-update-server`
