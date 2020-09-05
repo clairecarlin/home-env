@@ -163,7 +163,9 @@
 
 ;; pyenv mode
 (require 'pyenv-mode)
-(pyenv-mode)
+(when (or (file-directory-p "~/.pyenv") (file-directory-p "~/.pyenv"))
+ (pyenv-mode))
+
 
 ;; show line numbers
 ;; TODO(e-carlin): come on this is gross
@@ -187,6 +189,10 @@
           (lambda ()
             (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 ;; (add-hook 'c++-mode-hook #'superword-mode)
+;; TODO(e-carlin): Simplify
+(add-hook 'arduino-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?_ "w" arduino-mode-syntax-table)))
 (add-hook 'sh-mode-hook
           (lambda ()
             (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
