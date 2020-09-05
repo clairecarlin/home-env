@@ -73,7 +73,7 @@ function gsump() {
 export -f gsump
 
 #TODO(e-carlin): this doesn't work right on macos
-function pstree(){
+function pstree() {
     ps axf
 }
 export -f pstree
@@ -83,8 +83,12 @@ function pscpu(){
 }
 export -f pscpu
 
+function findd() {
+    find . -type f -name "$1" -exec rm -f '{}' \;
+}
+export -f findd
 
-function findn(){
+function findn() {
     local path="$1"
     local name="$2"
     if [[ -z "$2" ]]; then
