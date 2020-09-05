@@ -1,7 +1,7 @@
 # FIRST TIME: replace the <values>
 [user]
-    name = <git-user>
-    email = <git-email>
+    name = e-carlin
+    email = evan@carlin.com
 [core]
     excludesfile = ~/.gitignore_global
     filemode = true

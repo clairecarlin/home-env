@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PKDP
+# key: pp
+# --
+pkdp('$1 {}', $2)

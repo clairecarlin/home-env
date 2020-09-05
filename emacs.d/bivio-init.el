@@ -287,7 +287,7 @@ From the window at the lower right corner, select the one at the upper left."
 (define-key global-map "\C-m" 'newline-and-indent)
 (define-key global-map "\C-r" 'isearch-backward-regexp)
 (define-key global-map "\C-s" 'isearch-forward-regexp)
-(define-key global-map "\C-z" 'scroll-one-line-up)
+;; (define-key global-map "\C-z" 'scroll-one-line-up)
 (define-key global-map "\C-_" 'advertised-undo)
 
 ;;;; Meta keys
@@ -316,7 +316,7 @@ From the window at the lower right corner, select the one at the upper left."
 (define-key ctl-x-map "\C-m" 'shell)
 (define-key ctl-x-map "\C-n" 'insert-buffer)
 (define-key ctl-x-map "\C-u" nil); DELETE
-(define-key ctl-x-map "\C-z" 'shrink-window)
+;; (define-key ctl-x-map "\C-z" 'shrink-window)
 
 
 ;;;; VC keys

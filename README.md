@@ -6,16 +6,28 @@ for editors (ex ctrlp for vim). It also sets up useful shell functions and alias
 This repository was inspired by and copy and pasted from [biviosoftware
 home-env](https://github.com/biviosoftware/home-env).
 
+To install: `curl -s -L https://git.sr.ht/~e-carlin/home-env/blob/master/install.sh | bash`
+
+
+## TODO tracker
+Available [here](https://todo.sr.ht/~e-carlin/home-env).
+
 ## OS
 I work on macOS, Ubuntu, Fedora, and CentOS. My configuration should work across
 all of those systems
 
 ### macOS
-- To swap left ctrl and alt keys use [karabiner](https://pqrs.org/osx/karabiner/)
-(on linux systems I use xmodmap which is one of the configuration files
-contained in this repo so you don't have to do anything manual).
+- To swap left ctrl and alt keys use [karabiner](https://pqrs.org/osx/karabiner/).
+Specifically I do:
+left\_alt (equal to \`left_option\`) to left\_control and
+left\_control to left\_option
 - In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
+
+### Ubuntu
+- [Remove terminal transparency](https://askubuntu.com/questions/1076036/how-to-remove-all-window-transparency-effects)
+- `sudo kbdrate -r 30 -d 250` # Make keys go brrr
+- `Windows + p` # Cycle through display settings to get to mirror display
 
 ## Firefox
 - I prefer to cycle through tabs in order not most recently used. To do so
@@ -24,8 +36,15 @@ click `browser.ctrlTab.previews` so it's value becomes `false`.
 
 
 ## Editor
-Emacs is my main editor. I currently use version 26.3. See the install instructions below.
-
+Emacs is my main editor. I currently use version 27.1. It has faster json
+support which make lsp (language server protocol) work better.
+To install: `bash install-emacs.sh`
+### Usefule emacs commands during install/setup:
+- `M-x eval-expression RET (functionp 'json-serialize) RET ;(should be t)`
+- `M-x lsp-python-ms-update-server`
+- rm dirs in emacs.d/melpa then eval-buffer e-carlin-pack-install-helper.el
+(make sure that file has up to date packages found in dot/emacs)
+- `M-x toggle-debug-on-error`
 
 ### Other editor options
 I also sometimes use vi, vim, neovim, and vscode. There is configuration
@@ -42,14 +61,6 @@ so it is easier to manage the configuration of it across systems.
 - Download the tarball from the vscode downloads page
 - Unpack it into a directory named `vscode`
 - move that directory into `/opt`
-
-### emacs setup
-- Download the desired emacs version found https://ftp.gnu.org/pub/gnu/emacs/. 26.3 seems to work
-- `tar -zxvf emacs-VERSION.tar.gz`
-- `cd emacs-VERSION`
-- `./configure --with-x-toolkit=no --without-x # you may need to install other packages (ex libjpg) if you desire them and your system doesn't have them`
-- `make`
-- `sudo make install`
 
 ## Setup instructions
 *DISCLAIMER:* This installation will overwrite your existing dotfiles and any
