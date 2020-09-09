@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: conlog
+# key: conlog
+# --
+console.log(`$0`)
