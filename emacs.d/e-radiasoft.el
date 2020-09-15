@@ -64,12 +64,23 @@
     (set-window-configuration config)))
 
 ;; TODO(e-carlin): lots of repeated code
-(global-set-key (kbd "C-c sj")
-                'jupyterhub-test)
-(defun jupyterhub-test ()
+(global-set-key (kbd "C-c scj")
+                'ec-container-jupyterhub)
+(defun ec-container-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
     (create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
+    (delete-other-windows)
+    (window-configuration-to-register ?s)
+    (set-window-configuration config)))
+
+;; TODO(e-carlin): lots of repeated code
+(global-set-key (kbd "C-c sj")
+                'ec-service-jupyterhub)
+(defun ec-service-jupyterhub ()
+  (interactive)
+  (let ((config (current-window-configuration)))
+    (create-shell "jupyterhub" "cd ~/src/radiasoft/sirepo && sirepo service jupyterhub")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
