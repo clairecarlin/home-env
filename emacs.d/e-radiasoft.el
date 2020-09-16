@@ -1,3 +1,7 @@
+;; TODO(e-carlin): change filename to ec-radiasoft
+;; TODO(e-carlin): change all fn names to be prefixed with ec
+
+;; TODO(e-carlin): move to ec-base
 (defun create-shell (name command)
   (let ((s (concat "*shell* " name)))
     (progn
@@ -15,6 +19,18 @@
       ;; TODO(e-carlin): I don't message here, I just want to return a string.
       ;; I don't know elisp, help!
       (message s))))
+
+;; TODO(e-carlin): move to ec-base
+(global-set-key (kbd "C-c cs")
+                'ec-erase-shell-buffers)
+(defun ec-erase-shell-buffers ()
+  (interactive)
+  (mapc (lambda (buffer)
+          (if (string-match-p (regexp-quote "*shell*")
+                              (buffer-name buffer))
+              (with-current-buffer buffer
+                (erase-buffer))))
+        (buffer-list)))
 
 (defun supervisor-server-command (is-supervisor)
   (concat "cd ~/src/radiasoft/sirepo"
