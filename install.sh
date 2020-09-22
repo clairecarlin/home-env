@@ -1,6 +1,6 @@
 #!/bin/bash
-
 set -euo pipefail
+
 
 function main() {
     mkdir -p "$HOME"/bin
@@ -10,9 +10,13 @@ function main() {
 
     if [[ -d "$repo" ]]; then
         cd "$repo"
-        git pull -q
+        if ! git pull -q; then
+	    need_git_creds_message
+        fi
     else
-        git clone --recursive -q "git@git.sr.ht:~e-carlin/$repo"
+        if ! git clone --recursive -q "git@git.sr.ht:~e-carlin/$repo"; then
+             need_git_creds_message
+        fi
     fi
 
     cd "$HOME/src/e-carlin/$repo"
@@ -59,6 +63,11 @@ function main() {
         fi
     done
     echo "done"
+}
+
+function need_git_creds_message() {
+    echo 'eval "$(ssh-agent -s)" && ssh-add ~/.ssh/sr_ht && bash install.sh'
+    exit 1
 }
 
 main
