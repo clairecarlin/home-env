@@ -21,7 +21,7 @@
       (message s))))
 
 ;; TODO(e-carlin): move to ec-base
-(global-set-key (kbd "C-c cs")
+(global-set-key (kbd "C-c sc")
                 'ec-erase-shell-buffers)
 (defun ec-erase-shell-buffers ()
   (interactive)
@@ -75,17 +75,6 @@
   (interactive)
   (let ((config (current-window-configuration)))
     (create-shell "server" "cd ~/src/radiasoft/sirepo && bash  etc/run-auth-email.sh")
-    (delete-other-windows)
-    (window-configuration-to-register ?s)
-    (set-window-configuration config)))
-
-;; TODO(e-carlin): lots of repeated code
-(global-set-key (kbd "C-c scj")
-                'ec-container-jupyterhub)
-(defun ec-container-jupyterhub ()
-  (interactive)
-  (let ((config (current-window-configuration)))
-    (create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
