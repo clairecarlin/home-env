@@ -89,4 +89,29 @@
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
+
+
+;; TODO(e-carlin): lots of repeated code
+(global-set-key (kbd "C-c cj")
+                'ec-container-jupyterhub)
+(defun ec-container-jupyterhub ()
+  (interactive)
+  (let ((config (current-window-configuration)))
+    (create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
+    (delete-other-windows)
+    (window-configuration-to-register ?s)
+    (set-window-configuration config)))
+
+
+;; TODO(e-carlin): lots of repeated code
+(global-set-key (kbd "C-c sg")
+                'ec-service-github)
+(defun ec-service-github ()
+  (interactive)
+  (let ((config (current-window-configuration)))
+    (create-shell "github" "cd ~/src/radiasoft/sirepo && SIREPO_AUTH_METHODS='github' SIREPO_AUTH_GITHUB_KEY='85ceaa387c42426a2cc2' SIREPO_AUTH_GITHUB_SECRET='b6f29f66586e5c42c94e28c9305428896a6bad4e' sirepo service http")
+    (delete-other-windows)
+    (window-configuration-to-register ?s)
+    (set-window-configuration config)))
+
 (provide 'e-radiasoft) ;;; e-radiasoft.el ends here
