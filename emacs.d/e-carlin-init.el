@@ -13,7 +13,7 @@
              t)
 (package-initialize)
 
-(require 'e-radiasoft)
+(require 'ec-radiasoft)
 (require 'srefactor)
 (require 'srefactor-lisp)
 

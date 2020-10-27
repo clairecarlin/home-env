@@ -114,4 +114,20 @@
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
 
-(provide 'e-radiasoft) ;;; e-radiasoft.el ends here
+(global-set-key (kbd "C-c nt")
+                'ec-todos)
+(defun ec-todos ()
+  (interactive)
+  (find-file "/vagrant/notes/TODO")
+  )
+
+(global-set-key (kbd "C-c nn")
+                'ec-new-note)
+(defun ec-new-note ()
+  (interactive)
+  (find-file (concat "/vagrant/notes/" (format-time-string "%s")))
+  )
+()
+
+(provide 'ec-radiasoft)
+;;; ec-radiasoft.el ends here
