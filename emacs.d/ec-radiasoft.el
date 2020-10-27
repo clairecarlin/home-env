@@ -118,14 +118,14 @@
                 'ec-todos)
 (defun ec-todos ()
   (interactive)
-  (find-file "/vagrant/notes/TODO")
+  (find-file "/vagrant/notes/ec-note-TODO")
   )
 
 (global-set-key (kbd "C-c nn")
                 'ec-new-note)
 (defun ec-new-note ()
   (interactive)
-  (find-file (concat "/vagrant/notes/" (format-time-string "%s")))
+  (find-file (concat "/vagrant/notes/ec-note-" (format-time-string "%s")))
   )
 ()
 
