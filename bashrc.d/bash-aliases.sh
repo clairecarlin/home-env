@@ -20,6 +20,7 @@ alias sbp="source ~/.bash_profile"
 function g_delete_branches() {
     if [[ $1 == '-c' ]]; then
         git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
+        git remote prune origin
     else
         git checkout master && git branch --merged | egrep -v "(^\*|master)"
     fi

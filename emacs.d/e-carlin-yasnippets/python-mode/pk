@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pkdp no variable
+# key: pk
+# --
+pkdp('$1')
