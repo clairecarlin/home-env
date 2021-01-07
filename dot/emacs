@@ -24,9 +24,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (flymake-json flycheck srefactor slime lsp-ui arduino-mode xterm-color pyenv-mode xclip find-file-in-repository evil-commentary helm-lsp lsp-python-ms lsp-mode)))
- '(safe-local-variable-values (quote ((eval sh-set-shell "rpm" nil nil)))))
+   '(company flymake-json flycheck srefactor slime lsp-ui arduino-mode xterm-color pyenv-mode xclip find-file-in-repository evil-commentary helm-lsp lsp-python-ms lsp-mode))
+ '(safe-local-variable-values '((eval sh-set-shell "rpm" nil nil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
