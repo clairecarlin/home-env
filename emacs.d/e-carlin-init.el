@@ -23,6 +23,11 @@
                         t)
 (evil-mode 1)
 (advice-add 'evil-make-overriding-map :override #'ignore)
+;; Use undo-tree for evil-undo-system
+;; Use to be included by default in evil but was made optional at some point
+;; https://github.com/syl20bnr/spacemacs/pull/14026
+(evil-set-undo-system 'undo-tree)
+(global-undo-tree-mode)
 (require 'key-chord)
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj"
