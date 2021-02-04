@@ -4,8 +4,6 @@
 
 ;; Author: Samuel Hoffstaetter <samuel@hoffstaetter.com>
 ;; Keywords: files, convenience, repository, project, source control
-;; Package-Version: 20210128.2102
-;; Package-Commit: 2dba14e8175b1107dc9d2860d26de628b7548dbf
 ;; URL: https://github.com/hoffstaetter/find-file-in-repository
 ;; Version: 1.3
 
@@ -129,7 +127,7 @@
 (defvar ffir-repository-types
   `((".git"   . ,(lambda (dir)
                    (ffir-shell-command
-                    "git ls-files --recurse-submodules -zco --exclude-standard"     "\0" dir)))
+                    "git ls-files --recurse-submodules -zc --exclude-standard"      "\0" dir)))
     (".hg"    . ,(lambda (dir)
                    (ffir-shell-command "hg locate -0"                               "\0" dir)))
     ("_darcs" . ,(lambda (dir)
