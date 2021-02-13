@@ -1,6 +1,6 @@
 (provide 'e-carlin-init)
 
-(setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
+(setq package-user-dir "~/src/e-carlin/home-env/emacs.d/elpa") 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 

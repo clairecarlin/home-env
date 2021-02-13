@@ -1,4 +1,7 @@
  (setq package-selected-packages
    (quote
-    (flymake-json srefactor slime lsp-ui arduino-mode xterm-color pyenv-mode xclip find-file-in-repository evil-commentary company-lsp helm-lsp lsp-python-ms lsp-mode company)))
+    (arduino-mode company evil evil-commentary find-file-in-repository flymake flycheck helm lsp-mode helm-lsp lsp-mode lsp-python-ms lsp-ui markdown-mode pyenv-mode slime srefactor undo-tree xterm-color)))
+
 (package-install-selected-packages)
+
+
