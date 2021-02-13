@@ -1,11 +1,26 @@
 (provide 'e-carlin-init)
 
-(setq package-user-dir "~/src/e-carlin/home-env/emacs.d/elpa") 
+(setq package-user-dir "~/src/e-carlin/home-env/emacs.d/elpa")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (require 'package)
 (package-initialize)
+
+
+;; The list of packages I want installed
+;; **Make sure to update this list when installing a new package**
+;; If you need to monkey around with packages the nuclear option is:
+;; $ rm -rf ~/src/e-carlin/home-env/emacs.d/elpa/
+;; $ emacs ~/src/e-carlin/home-env/emacs.d/e-carlin-init.el
+;; highlight the setq below
+;; M-x eval-region
+;; M-x package-refresh-contents
+;; M-x package-install-selected-packages
+;; That will install the list of selected packages below
+(setq package-selected-packages
+   (quote
+    (arduino-mode company evil evil-commentary find-file-in-repository flymake flycheck helm lsp-mode helm-lsp lsp-mode lsp-python-ms lsp-ui markdown-mode pyenv-mode slime srefactor undo-tree xterm-color)))
 
 (require 'ec-radiasoft)
 (require 'srefactor)
