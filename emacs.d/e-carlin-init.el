@@ -1,11 +1,11 @@
 (provide 'e-carlin-init)
 
+(require 'package)
 (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/elpa")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-(require 'package)
 (package-initialize)
+
 
 
 ;; The list of packages I want installed
@@ -13,10 +13,8 @@
 ;; If you need to monkey around with packages the nuclear option is:
 ;; $ rm -rf ~/src/e-carlin/home-env/emacs.d/elpa/
 ;; $ emacs ~/src/e-carlin/home-env/emacs.d/e-carlin-init.el
-;; highlight the setq below
-;; M-x eval-region
 ;; M-x package-refresh-contents
-;; M-x package-install-selected-packages
+;; M-x package-install-selected-packages ;; Will install the list of packages below
 ;; That will install the list of selected packages below
 (setq package-selected-packages
    (quote

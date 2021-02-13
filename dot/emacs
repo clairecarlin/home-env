@@ -5,13 +5,9 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+; (package-initialize)
 
-(let
-    ;; Reversed, because add-to-list inserts in front of list
-  ((dirs '("~/src/e-carlin/home-env/emacs.d" "~/emacs" "~/.emacs.d/lisp")))
-  (dolist (p dirs)
-    (add-to-list 'load-path p)))
+(add-to-list 'load-path "~/src/e-carlin/home-env/emacs.d")
 (ignore-errors
     (require 'pre-bivio-init))
 (require 'bivio-init)
