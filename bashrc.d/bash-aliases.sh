@@ -98,12 +98,12 @@ function findn() {
         name="$1"
     fi
     # stderr redirection makes it so permission denied errors are not displayed
-   find "$path" -iname "*$name*" -not -name "*.pyc" 2>/dev/null
+   find "$path" -ipath "*$name*" -not -name "*.pyc" -not -type d 2>/dev/null
 }
 export -f findn
 
 function findsr() {
-    findn sirepo-data.json | grep -i "$1"
+    findn "$1*/sirepo-data.json"
 }
 export -f findsr
 
