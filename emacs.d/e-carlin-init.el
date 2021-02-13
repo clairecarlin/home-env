@@ -3,7 +3,7 @@
 (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("MELPA Stable" . "https://stable.melpa.org/packages/")))
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (require 'package)
 (package-initialize)
 
