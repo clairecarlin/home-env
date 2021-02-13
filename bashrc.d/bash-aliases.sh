@@ -102,6 +102,11 @@ function findn() {
 }
 export -f findn
 
+function findsr() {
+    findn sirepo-data.json | grep -i "$1"
+}
+export -f findsr
+
 function sirepo_pr_comments() {
     curl -s "https://api.github.com/repositories/37476480/pulls/$1/comments" | jq .[].body | sed G > c.txt
     echo 'results in c.txt'
