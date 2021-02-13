@@ -1,16 +1,10 @@
 (provide 'e-carlin-init)
 
 (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/melpa") ; sets melpa install dir
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("MELPA Stable" . "https://stable.melpa.org/packages/")))
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             t)
-(add-to-list 'package-archives
-             '("gnu" . "https://elpa.gnu.org/packages/")
-             t)
-(add-to-list 'package-archives
-             '("MELPA Stable" . "https://stable.melpa.org/packages/")
-             t)
 (package-initialize)
 
 (require 'ec-radiasoft)
