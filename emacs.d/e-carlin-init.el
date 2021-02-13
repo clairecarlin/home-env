@@ -1,12 +1,14 @@
 (provide 'e-carlin-init)
 
+;; Random notes about working with emacs
+;; You can recompile a package by editing the file and the calling M-x byte-recompile-directory
+;;
+
 (require 'package)
 (setq package-user-dir "~/src/e-carlin/home-env/emacs.d/elpa")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-
-
 
 ;; The list of packages I want installed
 ;; **Make sure to update this list when installing a new package**
