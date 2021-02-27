@@ -14,7 +14,7 @@ alias grep="grep --color=auto"
 # OSX uses BSD ls which supports -G for color
 ls --color=auto &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
 alias la="ls -A"
-alias ll='ls -l --hide="*.pyc" --block-size=M'
+alias ll='ls -lh'
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
 
