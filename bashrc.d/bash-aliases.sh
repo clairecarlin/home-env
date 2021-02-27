@@ -103,7 +103,7 @@ function findn() {
 export -f findn
 
 function findsr() {
-    findn "$1*/sirepo-data.json"
+    findn ~/src/radiasoft/sirepo/run "$1*/sirepo-data.json"
 }
 export -f findsr
 

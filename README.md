@@ -28,6 +28,7 @@ search for "esc+").
 - [Remove terminal transparency](https://askubuntu.com/questions/1076036/how-to-remove-all-window-transparency-effects)
 - `sudo kbdrate -r 30 -d 250` # Make keys go brrr
 - `Windows + p` # Cycle through display settings to get to mirror display
+- `sudo apt update && sudo apt upgrade -y` # Update machine
 
 ## Firefox
 - I prefer to cycle through tabs in order not most recently used. To do so
@@ -61,6 +62,10 @@ so it is easier to manage the configuration of it across systems.
 - Download the tarball from the vscode downloads page
 - Unpack it into a directory named `vscode`
 - move that directory into `/opt`
+
+## Keyboard
+### Kinesis Freestyl Pro
+- Sometimes on Ubuntu alt and windows key seem to get swapped in that case press the "Layout" 2x (once 2 layout lights will show up, press once more one layout light will be lit)
 
 ## Setup instructions
 *DISCLAIMER:* This installation will overwrite your existing dotfiles and any

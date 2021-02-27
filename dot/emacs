@@ -19,6 +19,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ffir-git-use-recurse-submodules nil)
  '(package-selected-packages
    '(undo-tree company flymake-json flycheck srefactor slime lsp-ui arduino-mode xterm-color pyenv-mode xclip find-file-in-repository evil-commentary helm-lsp lsp-python-ms lsp-mode))
  '(safe-local-variable-values '((eval sh-set-shell "rpm" nil nil))))
