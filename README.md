@@ -23,6 +23,7 @@ left\_alt (equal to \`left_option\`) to left\_control and
 left\_control to left\_option
 - In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
+- `brew install coreutils` # Things like gnu ls which supports the --hide flag
 
 ### Ubuntu
 - [Remove terminal transparency](https://askubuntu.com/questions/1076036/how-to-remove-all-window-transparency-effects)

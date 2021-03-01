@@ -11,12 +11,19 @@ alias gl="gll | head"
 alias gs="git status"
 alias k="clear"
 alias grep="grep --color=auto"
-# OSX uses BSD ls which supports -G for color
-ls --color=auto &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
-alias la="ls -A"
-alias ll='ls -l --hide="*.pyc" --block-size=M'
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
+
+# macOS uses BSD ls try to use GNU ls
+if ! ls --color=auto &> /dev/null && [ ! -s /usr/local/opt/coreutils/libexec/gnubin/ls ]; then
+    echo '** only BSD `ls` found. Maybe run `brew install coreutils` **'
+else
+    alias gls='ls'
+    [ -s /usr/local/opt/coreutils/libexec/gnubin/ls ] && alias gls='/usr/local/opt/coreutils/libexec/gnubin/ls'
+    alias gls='gls --color=auto'
+    alias la="gls -A"
+    alias ll='gls -l --hide="*.pyc" --block-size=M'
+fi
 
 function g_delete_branches() {
     if [[ $1 == '-c' ]]; then
