@@ -18,9 +18,8 @@ alias sbp="source ~/.bash_profile"
 if ! ls --color=auto &> /dev/null && [ ! -s /usr/local/opt/coreutils/libexec/gnubin/ls ]; then
     echo '** only BSD `ls` found. Maybe run `brew install coreutils` **'
 else
-    alias gls='ls'
-    [ -s /usr/local/opt/coreutils/libexec/gnubin/ls ] && alias gls='/usr/local/opt/coreutils/libexec/gnubin/ls'
-    alias gls='gls --color=auto'
+    alias gls='ls --color=auto'
+    [ -s /usr/local/opt/coreutils/libexec/gnubin/ls ] && alias gls='/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto'
     alias la="gls -A"
     alias ll='gls -l --hide="*.pyc" --block-size=M'
 fi
