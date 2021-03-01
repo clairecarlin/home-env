@@ -14,14 +14,14 @@ alias grep="grep --color=auto"
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
 
-# macOS uses BSD ls try to use GNU ls
+# macOS uses BSD ls try to use GNU ls which long options
 if ! ls --color=auto &> /dev/null && [ ! -s /usr/local/opt/coreutils/libexec/gnubin/ls ]; then
     echo '** only BSD `ls` found. Maybe run `brew install coreutils` **'
 else
     alias gls='ls --color=auto'
     [ -s /usr/local/opt/coreutils/libexec/gnubin/ls ] && alias gls='/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto'
     alias la="gls -A"
-    alias ll='gls -l --hide="*.pyc" --block-size=M'
+    alias ll='gls -lh --hide="*.pyc"'
 fi
 
 function g_delete_branches() {
