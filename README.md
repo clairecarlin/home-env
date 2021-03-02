@@ -23,6 +23,13 @@ left\_alt (equal to \`left_option\`) to left\_control and
 left\_control to left\_option
 - In iTerm2 I swap [right alt with esc+](https://www.iterm2.com/faq.html) (
 search for "esc+").
+### Brew (multiuser)
+- System preferences > users and groups > + icon > new group (named brew)
+- add user(s) to this group
+- install brew
+- `chgrp -R brew $(brew --prefix)/*` # make brew owned by brew group
+- `chmod -R g+w $(brew --prefix)/* ` # Allow members read and write privs
+- ** `sudo chown -R ${USER}:brew $(brew --prefix)/*` ** # Brew is messed up, may have to run this as the user before running any brew commands
 - `brew install coreutils` # Things like gnu ls which supports the --hide flag
 
 ### Ubuntu
