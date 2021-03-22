@@ -61,7 +61,7 @@
   (interactive)
   (let ((config (current-window-configuration)))
     ;; TODO(e-carlin): new machine need to install flash commented out until then
-    (create-shell "server" "cd ~/src/radiasoft/sirepo &&  SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash sirepo service http")
+    (create-shell "server" "cd ~/src/radiasoft/sirepo &&  SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash SIREPO_MPI_CORES=4 sirepo service http")
     ;; (create-shell "server" "cd ~/src/radiasoft/sirepo &&  sirepo service http")
     (delete-other-windows)
     (window-configuration-to-register ?s)
@@ -74,7 +74,7 @@
 (defun sirepo-email ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (create-shell "server" "cd ~/src/radiasoft/sirepo && bash  etc/run-auth-email.sh")
+    (create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash bash  etc/run-auth-email.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
