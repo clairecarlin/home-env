@@ -21,7 +21,7 @@ else
     alias gls='ls --color=auto'
     [ -s /usr/local/opt/coreutils/libexec/gnubin/ls ] && alias gls='/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto'
     alias la="gls -A"
-    alias ll='gls -lh --hide="*.pyc"'
+    alias ll='gls -lah --hide="*.pyc"'
 fi
 
 function g_delete_branches() {
