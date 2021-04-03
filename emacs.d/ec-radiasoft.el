@@ -2,7 +2,7 @@
 ;; TODO(e-carlin): change all fn names to be prefixed with ec
 
 ;; TODO(e-carlin): move to ec-base
-(defun create-shell (name command)
+(defun ec-create-shell (name command)
   (let ((s (concat "*shell* " name)))
     (progn
       (shell (set-buffer (get-buffer-create s)))
@@ -32,21 +32,21 @@
                 (erase-buffer))))
         (buffer-list)))
 
-(defun supervisor-server-command (is-supervisor)
+(defun ec-supervisor-server-command (is-supervisor)
   (concat "cd ~/src/radiasoft/sirepo"
           " && "
           " bash etc/run-"
           (if is-supervisor "supervisor" "server")
           ".sh sbatch"))
 (global-set-key (kbd "C-c sb")
-                'start-supervisor-server)
-(defun start-supervisor-server ()
+                'ec-start-supervisor-server)
+(defun ec-start-supervisor-server ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (let ((supervisor (create-shell "supervisor"
-                                    (supervisor-server-command t))))
-      (create-shell "server"
-                    (supervisor-server-command nil))
+    (let ((supervisor (ec-create-shell "supervisor"
+                                    (ec-supervisor-server-command t))))
+      (ec-create-shell "server"
+                    (ec-supervisor-server-command nil))
       (delete-other-windows)
       (split-window-below 10)
       (select-window (next-window))
@@ -56,13 +56,13 @@
 
 ;; TODO(e-carlin): lots of repeated code
 (global-set-key (kbd "C-c ss")
-                'sirepo-service-http)
-(defun sirepo-service-http ()
+                'ec-sirepo-service-http)
+(defun ec-sirepo-service-http ()
   (interactive)
   (let ((config (current-window-configuration)))
     ;; TODO(e-carlin): new machine need to install flash commented out until then
-    (create-shell "server" "cd ~/src/radiasoft/sirepo &&  SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash SIREPO_MPI_CORES=4 sirepo service http")
-    ;; (create-shell "server" "cd ~/src/radiasoft/sirepo &&  sirepo service http")
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo &&  SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash SIREPO_MPI_CORES=4 sirepo service http")
+    ;; (ec-create-shell "server" "cd ~/src/radiasoft/sirepo &&  sirepo service http")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -70,11 +70,11 @@
 
 ;; TODO(e-carlin): lots of repeated code
 (global-set-key (kbd "C-c se")
-                'sirepo-email)
-(defun sirepo-email ()
+                'ec-sirepo-email)
+(defun ec-sirepo-email ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash bash  etc/run-auth-email.sh")
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash bash  etc/run-auth-email.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -85,7 +85,7 @@
 (defun ec-service-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (create-shell "jupyterhub" "cd ~/src/radiasoft/sirepo && bash etc/run-jupyterhub.sh")
+    (ec-create-shell "jupyterhub" "cd ~/src/radiasoft/sirepo && bash etc/run-jupyterhub.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -97,7 +97,7 @@
 (defun ec-container-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
+    (ec-create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -109,7 +109,7 @@
 (defun ec-service-github ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (create-shell "github" "cd ~/src/radiasoft/sirepo && SIREPO_AUTH_METHODS='github' SIREPO_AUTH_GITHUB_KEY='85ceaa387c42426a2cc2' SIREPO_AUTH_GITHUB_SECRET='b6f29f66586e5c42c94e28c9305428896a6bad4e' sirepo service http")
+    (ec-create-shell "github" "cd ~/src/radiasoft/sirepo && SIREPO_AUTH_METHODS='github' SIREPO_AUTH_GITHUB_KEY='85ceaa387c42426a2cc2' SIREPO_AUTH_GITHUB_SECRET='b6f29f66586e5c42c94e28c9305428896a6bad4e' sirepo service http")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
