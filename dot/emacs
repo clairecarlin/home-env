@@ -11,7 +11,7 @@
 (ignore-errors
     (require 'pre-bivio-init))
 (require 'bivio-init)
-(require 'e-carlin-init)
+(require 'ec-init)
 (ignore-errors
   (require 'post-bivio-init))
 (custom-set-variables

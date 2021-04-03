@@ -1,4 +1,4 @@
-(provide 'e-carlin-init)
+(provide 'ec-init)
 
 ;; Random notes about working with emacs
 ;; You can recompile a package by editing the file and the calling M-x byte-recompile-directory
@@ -14,7 +14,7 @@
 ;; **Make sure to update this list when installing a new package**
 ;; If you need to monkey around with packages the nuclear option is:
 ;; $ rm -rf ~/src/e-carlin/home-env/emacs.d/elpa/
-;; $ emacs ~/src/e-carlin/home-env/emacs.d/e-carlin-init.el
+;; $ emacs ~/src/e-carlin/home-env/emacs.d/ec-init.el
 ;; M-x package-refresh-contents
 ;; M-x package-install-selected-packages ;; Will install the list of packages below
 ;; That will install the list of selected packages below
