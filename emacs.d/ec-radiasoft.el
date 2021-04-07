@@ -2,6 +2,7 @@
 ;; TODO(e-carlin): change all fn names to be prefixed with ec
 
 ;; TODO(e-carlin): move to ec-base
+;; TODO(e-carlin): default name to server
 (defun ec-create-shell (name command)
   (let ((s (concat "*shell* " name)))
     (progn
@@ -60,9 +61,7 @@
 (defun ec-sirepo-service-http ()
   (interactive)
   (let ((config (current-window-configuration)))
-    ;; TODO(e-carlin): new machine need to install flash commented out until then
     (ec-create-shell "server" "cd ~/src/radiasoft/sirepo &&  SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash SIREPO_MPI_CORES=4 sirepo service http")
-    ;; (ec-create-shell "server" "cd ~/src/radiasoft/sirepo &&  sirepo service http")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -85,7 +84,7 @@
 (defun ec-service-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (ec-create-shell "jupyterhub" "cd ~/src/radiasoft/sirepo && bash etc/run-jupyterhub.sh")
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && bash etc/run-jupyterhub.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
@@ -97,19 +96,7 @@
 (defun ec-container-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (ec-create-shell "jupyterhub" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
-    (delete-other-windows)
-    (window-configuration-to-register ?s)
-    (set-window-configuration config)))
-
-
-;; TODO(e-carlin): lots of repeated code
-(global-set-key (kbd "C-c sg")
-                'ec-service-github)
-(defun ec-service-github ()
-  (interactive)
-  (let ((config (current-window-configuration)))
-    (ec-create-shell "github" "cd ~/src/radiasoft/sirepo && SIREPO_AUTH_METHODS='github' SIREPO_AUTH_GITHUB_KEY='85ceaa387c42426a2cc2' SIREPO_AUTH_GITHUB_SECRET='b6f29f66586e5c42c94e28c9305428896a6bad4e' sirepo service http")
+    (ec-create-shell "server" "cd ~/src/radiasoft/container-jupyterhub/container-conf && bash test.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
