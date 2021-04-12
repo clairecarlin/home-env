@@ -53,6 +53,8 @@
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
+(setq visible-bell nil)
+
 ;; evil-commentary for commenting out code
 (require 'evil-commentary)
 (evil-commentary-mode)
@@ -295,9 +297,7 @@
           'append)
 
 ;; remove flickering when searching
-(setq-default isearch-allow-scroll t ; TODO(e-carlin): what does this do?
-              lazy-highlight-cleanup nil ; TODO(e-carlin): what does this do?
-              lazy-highlight-initial-delay 0) ; this removes the flicker
+(setq-default lazy-highlight-initial-delay 0) ; this removes the flicker
 
 ;; slime mode for lisp
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
