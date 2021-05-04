@@ -1,6 +1,5 @@
 alias d_container_id="docker ps | cut -f1 -d ' ' | awk 'NR==2{printf \"%s\", \$1}' | xclip -selection c"
 alias g_files_in_commit="git diff-tree --no-commit-id --name-only -r"
-alias gb="git branch --sort=committerdate"
 alias gbg="git branch | grep -i"
 alias gcam="git commit -a -m"
 alias gch="git checkout"
@@ -24,16 +23,6 @@ else
     alias ll='gls -lah --hide="*.pyc"'
 fi
 
-function g_delete_branches() {
-    if [[ $1 == '-c' ]]; then
-        git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
-        git remote prune origin
-    else
-        git checkout master && git branch --merged | egrep -v "(^\*|master)"
-    fi
-}
-export -f g_delete_branches
-
 # From: https://github.com/biviosoftware/home-env/blob/master/bashrc.d/zz-10-base.sh#L296
 function g() {
     local x="$1"
@@ -44,6 +33,28 @@ function g() {
        "$x" "${@-.}"   2>/dev/null
 }
 export -f g
+
+function g_delete_branches() {
+    if [[ $1 == '-c' ]]; then
+        git checkout master && git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
+        git remote prune origin
+    else
+        git checkout master && git branch --merged | egrep -v "(^\*|master)"
+    fi
+}
+export -f g_delete_branches
+
+function gb() {
+    PS3="Enter number of branch to checkout: "
+    # Need to use --format because normal `git branch` shows a * next to the
+    # current branch which will be expanded by bash to list files in $PWD
+    select b in $(git branch --format='%(refname:short)' --sort=committerdate)
+    do
+        gch "$b"
+        break
+    done
+}
+export -f gb
 
 function gp() {
     if git push "$@" ; then
