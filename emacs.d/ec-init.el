@@ -1,6 +1,6 @@
 (provide 'ec-init)
 
-;; Random notes about working with emacs
+;; Random notes about working with emacs:
 ;; You can recompile a package by editing the file and the calling M-x byte-recompile-directory
 ;;
 

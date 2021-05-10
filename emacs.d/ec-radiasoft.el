@@ -1,6 +1,3 @@
-;; TODO(e-carlin): change filename to ec-radiasoft
-;; TODO(e-carlin): change all fn names to be prefixed with ec
-
 ;; TODO(e-carlin): move to ec-base
 ;; TODO(e-carlin): default name to server
 (defun ec-create-shell (name command)
@@ -84,7 +81,7 @@
 (defun ec-service-jupyterhub ()
   (interactive)
   (let ((config (current-window-configuration)))
-    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && bash etc/run-jupyterhub.sh")
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_PROPRIETARY_SIM_TYPES=flash bash etc/run-jupyterhub.sh")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))

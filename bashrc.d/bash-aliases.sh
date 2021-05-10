@@ -44,6 +44,18 @@ function g_delete_branches() {
 }
 export -f g_delete_branches
 
+function g_parent() {
+    # Find the name of the nearest "parent" branch
+    # https://stackoverflow.com/a/17843908/5518313
+    git show-branch \
+        | sed "s/].*//" \
+        | grep "\*" \
+        | grep -v "$(git rev-parse --abbrev-ref HEAD)" \
+        | head -n1 \
+        | sed "s/^.*\[//"
+}
+export -f g_parent
+
 function gb() {
     PS3="Enter number of branch to checkout: "
     # Need to use --format because normal `git branch` shows a * next to the
@@ -75,7 +87,7 @@ export -f gpy
 
 
 function gext() {
-    g "$1"  --exclude-dir="ext" .
+    g "$1"  --exclude-dir="ext" --exclude-dir="node_modules" .
 }
 export -f gext
 
