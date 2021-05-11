@@ -1,7 +1,6 @@
 alias d_container_id="docker ps | cut -f1 -d ' ' | awk 'NR==2{printf \"%s\", \$1}' | xclip -selection c"
 alias g_files_in_commit="git diff-tree --no-commit-id --name-only -r"
 alias gbg="git branch | grep -i"
-alias gcam="git commit -a -m"
 alias gch="git checkout"
 alias gd="git diff --color"
 alias gg="git log --graph --decorate --simplify-by-decoration --oneline"
@@ -67,6 +66,11 @@ function gb() {
     done
 }
 export -f gb
+
+function gcam() {
+    git commit -a -m "$*"
+}
+export -f gcam
 
 function gp() {
     if git push "$@" ; then
