@@ -40,10 +40,3 @@ _e-carlin_bashrc_init() {
 
 _e-carlin_bashrc_init
 unset -f _e-carlin_bashrc_init
-
-
-# For personal finances ansible conf, ugh
-# source ... line needs to be exactly as is (wonky)
-if [ -f /home/vagrant/pyenv/.pyenvrc ]; then
-source /home/vagrant/pyenv/.pyenvrc
-fi
