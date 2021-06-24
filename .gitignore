@@ -3,3 +3,5 @@ vscode.d/user-data/*
 !vscode.d/user-data/User
 vscode.d/user-data/User/globalStorage/*
 vscode.d/user-data/User/workspaceStorage/*
+
+__pycache__/
