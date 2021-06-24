@@ -1,0 +1,61 @@
+{
+    "models": {
+        "beamlines": [
+            {
+                "id": 1,
+                "items": [
+                    2,
+                    6,
+                    7,
+                    5,
+                    8,
+                    9,
+                    10
+
+
+                    #name
+                    2
+                    2,
+                    2
+                    5
+                    5,
+                    2,
+                    2
+                ]
+            }
+        ],
+        "elements": [
+            {
+                "_id": 2,
+                "name": "2"
+            },
+            {
+                "_id": 5,
+                "name": "5"
+            },
+            {
+                "_id": 6,
+                "name": "2"
+            },
+            {
+                "_id": 7,
+                "name": "5"
+            },
+            {
+                "_id": 8,
+                "name": "5"
+            },
+            {
+                "_id": 9,
+                "name": "5"
+            },
+            {
+                "_id": 10,
+                "name": "2"
+            }
+        ],
+        "simulation": {
+            "visualizationBeamlineId": 1
+        }
+    }
+}
