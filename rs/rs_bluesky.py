@@ -35,7 +35,7 @@ _ = make_dir_tree(datetime.datetime.now().year, base_path=root_dir)
 
 import sirepo_bluesky.sirepo_detector as sd
 import bluesky.plans as bp
-sirepo_det = sd.SirepoDetector(sim_id='NaJxbguj', sim_type='srw')
+sirepo_det = sd.SirepoDetector(sim_id='FwMFQ9f0', sim_type='srw')
 sirepo_det.select_optic('Aperture')
 param1 = sirepo_det.create_parameter('horizontalSize')
 param2 = sirepo_det.create_parameter('verticalSize')
