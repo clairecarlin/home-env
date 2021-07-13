@@ -96,14 +96,8 @@ so it is easier to manage the configuration of it across systems.
 - Sometimes on Ubuntu alt and windows key seem to get swapped in that case press the "Layout" 2x (once 2 layout lights will show up, press once more one layout light will be lit)
 
 ## Setup instructions
-*DISCLAIMER:* This installation will overwrite your existing dotfiles and any
-other files in it's way. It should move most files to a `*.old` but makes no
-guarantees about this. If you are uncomfortable with the possibility of ruining
-your existing configuration (or worse) I suggest reading through the sources
-and copying and pasting the things you need. Another option is to fork and
-change what makes sense for you.
-1. `mkdir -p ~/src/e-carlin`
-2. `cd $_ && git clone --recursive git@git.sr.ht:~e-carlin/home-env`
-3. `cd home-env`
-4. `bash install.sh # shows you what will happen`
-5. `bash install.sh -c # applies changes. -c stands for "confirm"`
+`mkdir -p ~/src/e-carlin`
+`cd $_ && git clone --recursive git@git.sr.ht:~e-carlin/home-env`
+`cd home-env`
+`bash install.sh`
+`exec bash`
