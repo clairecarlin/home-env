@@ -95,6 +95,10 @@ so it is easier to manage the configuration of it across systems.
 ### Kinesis Freestyl Pro
 - Sometimes on Ubuntu alt and windows key seem to get swapped in that case press the "Layout" 2x (once 2 layout lights will show up, press once more one layout light will be lit)
 
+## GPG
+`gpg --full-generate-key`
+`
+
 ## Setup instructions
 `mkdir -p ~/src/e-carlin`
 `cd $_ && git clone --recursive git@git.sr.ht:~e-carlin/home-env`
