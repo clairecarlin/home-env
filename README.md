@@ -96,8 +96,19 @@ so it is easier to manage the configuration of it across systems.
 - Sometimes on Ubuntu alt and windows key seem to get swapped in that case press the "Layout" 2x (once 2 layout lights will show up, press once more one layout light will be lit)
 
 ## GPG
-`gpg --full-generate-key`
-`
+- Creation instructions: https://www.liquidweb.com/kb/how-do-i-use-gpg/
+`gpg --full-generate-key # rsa/rsa; 4096`
+`gpg --output public.asc --armor --export <email>`
+`gpg --output private.asc --armor --export-secret-keys --export-options export-backup <email>`
+`gpg —-import /path/to/private.asc`
+
+### Assymetric encryption
+`gpg --output test.gpg --encrypt --sign --armor --recipient <email> test.txt`
+`gpg --output test.txt --decrypt test.gpg`
+
+### Symmetric encryption
+`gpg --symmetric test.txt`
+`gpg --decrypt test.txt.gpg > test.out`
 
 ## Setup instructions
 `mkdir -p ~/src/e-carlin`
