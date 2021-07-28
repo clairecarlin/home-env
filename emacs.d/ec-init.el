@@ -1,5 +1,14 @@
 (provide 'ec-init)
 
+;; TODO(e-carlin): The order of things is somewhat important. In older emacs
+;; certain things don't work so doing them in a specific order makes things that
+;; I really want (ex evil) are done first and work right.
+;; When this is the case (ex CentOS7 with default emacs-nox) then
+;; rm -rf emacs.d/elpa
+;; M-x list-packages
+;; I evil
+;; x
+
 ;; Random notes about working with emacs:
 ;; You can recompile a package by editing the file and the calling M-x byte-recompile-directory
 ;;
@@ -24,20 +33,19 @@
 
 (require 'ec-radiasoft)
 (require 'ec-util)
-(require 'srefactor)
-(require 'srefactor-lisp)
 
-(setq evil-toggle-key "C-q")
+
+;; Open shell in current buffer
+(add-to-list 'display-buffer-alist
+             '("^\\*shell\\*$" . (display-buffer-same-window)))
 (require 'evil)
 (customize-set-variable 'evil-want-minibuffer
                         t)
 (evil-mode 1)
-(advice-add 'evil-make-overriding-map :override #'ignore)
-;; Use undo-tree for evil-undo-system
-;; Use to be included by default in evil but was made optional at some point
-;; https://github.com/syl20bnr/spacemacs/pull/14026
-(evil-set-undo-system 'undo-tree)
-(global-undo-tree-mode)
+;; Start shell in normal-mode
+(evil-set-initial-state 'shell-mode 'normal)
+
+(setq evil-toggle-key "C-q")
 (require 'key-chord)
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj"
@@ -53,6 +61,15 @@
 ;; Also in visual mode
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+;; Use undo-tree for evil-undo-system
+;; Use to be included by default in evil but was made optional at some point
+;; https://github.com/syl20bnr/spacemacs/pull/14026
+(evil-set-undo-system 'undo-tree)
+(global-undo-tree-mode)
+(advice-add 'evil-make-overriding-map :override #'ignore)
+
+(require 'srefactor)
+(require 'srefactor-lisp)
 
 (setq visible-bell nil)
 
@@ -104,12 +121,6 @@
   (other-window 1))
 (global-set-key (kbd "C-x 3")
                 'split-and-follow-vertically)
-
-;; Open shell in current buffer
-(add-to-list 'display-buffer-alist
-             '("^\\*shell\\*$" . (display-buffer-same-window)))
-;; Start shell in normal-mode
-(evil-set-initial-state 'shell-mode 'normal)
 
 ;; Don't prompt to kill buffers with running processes
 (setq kill-buffer-query-functions nil)
@@ -176,8 +187,7 @@
 (require 'emacs-pager)
 (add-to-list 'auto-mode-alist
              '("\\.emacs-pager$" . emacs-pager-mode))
-;; color 750 lines (default is 500)
-(setq emacs-pager-max-line-coloring 750)
+(setq emacs-pager-max-line-coloring 2000)
 
 ;; pyenv mode
 (require 'pyenv-mode)
