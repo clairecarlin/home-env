@@ -26,10 +26,10 @@
 ;; $ emacs ~/src/e-carlin/home-env/emacs.d/ec-init.el
 ;; M-x package-refresh-contents
 ;; M-x package-install-selected-packages ;; Will install the list of packages below
-;; That will install the list of selected packages below
+;; M-x package-autoremove ;; Will remove all packages not listed here (won't remove deps of these packages)
 (setq package-selected-packages
    (quote
-    (arduino-mode company evil evil-commentary find-file-in-repository flymake flycheck helm lsp-mode helm-lsp lsp-mode lsp-python-ms lsp-ui markdown-mode pyenv-mode slime srefactor undo-tree xterm-color)))
+    (arduino-mode company evil evil-commentary find-file-in-repository flymake flycheck helm lsp-mode helm-lsp lsp-mode lsp-ui markdown-mode pyenv-mode slime srefactor undo-tree xterm-color lsp-pyright)))
 
 (require 'ec-radiasoft)
 (require 'ec-util)
@@ -278,7 +278,7 @@
 
 ;; lsp (language server protocol)
 (require 'lsp-mode)
-(require 'lsp-python-ms)
+(require 'lsp-pyright)
 (require 'lsp-ui)
 (setq lsp-signature-auto-activate nil) ;; disalbe bottom documentation popup
 (setq company-dabbrev-downcase 1)

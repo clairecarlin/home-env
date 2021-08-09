@@ -100,6 +100,18 @@
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
 
+;; TODO(e-carlin): lots of repeated code
+(global-set-key (kbd "C-c sd")
+                'ec-sirepo-dynamic)
+(defun ec-sirepo-dynamic ()
+  (interactive)
+  (let ((config (current-window-configuration)))
+    ;; TODO(e-carlin): figure out how to supply dict through env
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_DYNAMIC_SIM_TYPES='code1:rsprivate' SIREPO_MPI_CORES=4 sirepo service http")
+    (delete-other-windows)
+    (window-configuration-to-register ?s)
+    (set-window-configuration config)))
+
 (global-set-key (kbd "C-c nt")
                 'ec-todos)
 (defun ec-todos ()
