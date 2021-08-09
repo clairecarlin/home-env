@@ -280,6 +280,7 @@
 (require 'lsp-mode)
 (require 'lsp-pyright)
 (require 'lsp-ui)
+(setq lsp-pyright-auto-import-completions nil)
 (setq lsp-signature-auto-activate nil) ;; disalbe bottom documentation popup
 (setq company-dabbrev-downcase 1)
 (setq company-idle-delay 0.01)
