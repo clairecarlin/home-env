@@ -107,7 +107,7 @@
   (interactive)
   (let ((config (current-window-configuration)))
     ;; TODO(e-carlin): figure out how to supply dict through env
-    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_DYNAMIC_SIM_TYPES='code1:rsprivate' SIREPO_MPI_CORES=4 sirepo service http")
+    (ec-create-shell "server" "cd ~/src/radiasoft/sirepo && SIREPO_FEATURE_CONFIG_SIM_TYPES='srw:code1' SIREPO_FEATURE_CONFIG_ROOT_PACKAGES='sirepo_test_root_packages' SIREPO_MPI_CORES=4 sirepo service http")
     (delete-other-windows)
     (window-configuration-to-register ?s)
     (set-window-configuration config)))
