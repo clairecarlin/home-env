@@ -11,7 +11,6 @@ alias k="clear"
 alias grep="grep --color=auto"
 alias reset_keymap="setxkbmap -layout us"
 alias sbp="source ~/.bash_profile"
-alias py="/opt/anaconda3/bin/python"
 
 # macOS uses BSD ls try to use GNU ls which long options
 if ! ls --color=auto &> /dev/null && [ ! -s /usr/local/opt/coreutils/libexec/gnubin/ls ]; then
