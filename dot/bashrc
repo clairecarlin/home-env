@@ -1,0 +1,26 @@
+#!/bin/bash
+# This avoids recursion on scripts called from ~/.bashrc
+unset BASH_ENV
+
+_cc_bashrc_init() {
+    # Source the files while avoiding recursion
+    local -i _cc_bashrc_init_seen=${_cc_bashrc_init_seen:-0}
+    _cc_bashrc_init_seen+=1
+    if (( _cc_bashrc_init_seen > 3 )); then
+        echo "$HOME/.bashrc: sourced in an infinite recursion ($_cc_bashrc_init_seen), exiting 'source'" 1>&2
+        return
+    fi
+    local f
+    for f in \
+        /etc/bashrc \
+        "$HOME"/src/clairecarlin/home-env/bashrc.d/*.sh \
+        ; do
+        if [[ -f $f ]]; then
+            source "$f"
+        fi
+    done
+    _cc_bashrc_init_seen+=-1
+}
+
+_cc_bashrc_init
+unset -f _cc_bashrc_init

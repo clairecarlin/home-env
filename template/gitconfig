@@ -1,0 +1,12 @@
+[user]
+    name = Claire Carlin
+    email = claire@carlin.com
+[core]
+    excludesfile = ~/.gitignore_global
+    filemode = true
+[diff]
+    wsErrorHighlight = all
+[pager]
+    branch = false
+[push]
+    default = simple

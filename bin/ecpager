@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [[ -v INSIDE_EMACS ]]; then
+    exec ep
+fi
+exec $PAGER

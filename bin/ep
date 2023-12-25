@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import tempfile
+import fileinput
+import subprocess
+
+f = tempfile.NamedTemporaryFile(suffix='.emacs-pager', mode='w+')
+for l in fileinput.input():
+  f.write(l)
+f.seek(0)
+subprocess.check_call(('emacsclient', f.name))
+f.close()

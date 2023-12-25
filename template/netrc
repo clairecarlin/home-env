@@ -1,0 +1,12 @@
+# FIRST TIME: replace the <values>
+machine github.com
+login <git-user>
+password <git-password>
+
+machine gist.github.com
+login <git-user>
+password <git-password>
+
+machine gitlab.com
+login <git-user>
+password <git-password>
